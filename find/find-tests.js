@@ -2,72 +2,75 @@
 
 tests({
 
-  'find should run the callback initial array.length times': function() {
-	fail();
-	var timesCalled = 0;
-	var timesToCall = [1,2,3].length;
-	find([1,2,3], function() {
-	  timesCalled++;
-	});
-	eq(timesCalled, timesToCall);
-  },
   'find should pass in the ith element as the first argument to the callback': function() {
-	fail();
 	find([1], function(value) {
 	  eq(value, 1);
 	});
   },
   'find should pass in the ith index as the second argument to the callback': function() {
-	fail();
 	find([1], function(value, index) {
 	  eq(index, 0);
 	});
   },
+  'find should run the callback initial array.length times': function() {
+	var timesCalled = 0;
+	var testArray = [1, 2, 3];
+	var timesToCall = testArray.length;
+	find(testArray, function(el, i) {
+	  if (i === 0) {
+		testArray.push(4);
+	  }
+	  timesCalled++;
+	});
+	eq(timesCalled, timesToCall);
+	eq(testArray.length, 4);
+  },
   'find should pass in the array as the third argument to the callback': function() {
-	fail();
 	var testArray = [1];
 	find(testArray, function(value, index, array) {
 	  eq(array, testArray);
 	});
   },
   'find should accept an alternate "this" object to bind to': function() {
-	fail();
 	var altThis = {alternate: true};
 	find([1], function() {
 	  eq(altThis, this);
 	}, altThis);
   },
   'find should return the first element that callback returns "true" for': function() {
-	fail();
-	var mappedArray = undefined;
-	mappedArray = map([1, 2, 3], function() {});
-	eq(Array.isArray(mappedArray), true);
+	var result = find([1, 2, 3], function(value) {
+	  return value > 1;
+	});
+	eq(result, 2);
   },
   'find should return undefined if callback never returns true': function() {
-	fail();
-	var mappedArray = find([1, 2, 3], function(el) {
-		return el * 2;
+	var result = find([1, 2, 3], function(value) {
+		return value > 3;
 	});
-	eq(mappedArray.length, 3);
-	eq(mappedArray[0], 2);
-	eq(mappedArray[1], 4);
-	eq(mappedArray[2], 6);
+	eq(result, undefined);
   },
   'find should run callback on missing elements': function() {
-	fail();
-	var weirdArray = [, 1];
-	var mappedArray = find(weirdArray, function(el) {
-		return el * 2;
+	var timesCalled = 0;
+	var sparseArray = [, 1, 2, , 3];
+	var result = find(sparseArray, function(value) {
+		timesCalled++;
+		return value > 2;
 	});
-	eq(mappedArray.length, 2);
-	eq(0 in mappedArray, false);
-	eq(mappedArray[0], undefined);
-	eq(mappedArray[1], 2);
+	eq(timesCalled, 5);
+	eq(result, 3);
   }
  });
 
 /* other tests
-
+  'find should take an array as its first argument': function() {
+  	fail();
+  },
+  'find should take a callback as its second argument': function() {
+  	fail();
+  }, 
+  'find's callback should return true or false': function() {
+  	fail();
+  }, 
   'find should not visit an appended element unless an earlier element is removed': function() {
 	fail();
   },
