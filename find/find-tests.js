@@ -2,131 +2,87 @@
 
 tests({
 
-  // "The range of elements processed by filter() is set before the first invocation of callback."
-  'filter should run the callback initial array.length times': function() {
+  'find should run the callback initial array.length times': function() {
+	fail();
 	var timesCalled = 0;
 	var timesToCall = [1,2,3].length;
-	filter([1,2,3], function() {
+	find([1,2,3], function() {
 	  timesCalled++;
 	});
 	eq(timesCalled, timesToCall);
   },
-  'filter should pass in the ith element as the first argument to the callback': function() {
-	filter([1], function(value) {
+  'find should pass in the ith element as the first argument to the callback': function() {
+	fail();
+	find([1], function(value) {
 	  eq(value, 1);
 	});
   },
-  'filter should pass in the ith index as the second argument to the callback': function() {
-	filter([1], function(value, index) {
+  'find should pass in the ith index as the second argument to the callback': function() {
+	fail();
+	find([1], function(value, index) {
 	  eq(index, 0);
 	});
   },
-  'filter should pass in the array as the third argument to the callback': function() {
+  'find should pass in the array as the third argument to the callback': function() {
+	fail();
 	var testArray = [1];
-	filter(testArray, function(value, index, array) {
+	find(testArray, function(value, index, array) {
 	  eq(array, testArray);
 	});
   },
-  'filter should accept an alternate "this" object to bind to': function() {
+  'find should accept an alternate "this" object to bind to': function() {
+	fail();
 	var altThis = {alternate: true};
-	filter([1], function() {
+	find([1], function() {
 	  eq(altThis, this);
 	}, altThis);
   },
-  'filter should return a new array': function() {
-	var filteredArray = undefined;
-	filteredArray = filter([1, 2, 3], function() {});
-	eq(Array.isArray(filteredArray), true);
+  'find should return the first element that callback returns "true" for': function() {
+	fail();
+	var mappedArray = undefined;
+	mappedArray = map([1, 2, 3], function() {});
+	eq(Array.isArray(mappedArray), true);
   },
-  'filter should return an array with only those elements where callback returns true': function() {
-	var filteredArray = filter([1, 2, 3], function(el) {
-		return el > 2;
+  'find should return undefined if callback never returns true': function() {
+	fail();
+	var mappedArray = find([1, 2, 3], function(el) {
+		return el * 2;
 	});
-	eq(filteredArray.length, 1);
-	eq(filteredArray[0], 3);
+	eq(mappedArray.length, 3);
+	eq(mappedArray[0], 2);
+	eq(mappedArray[1], 4);
+	eq(mappedArray[2], 6);
   },
-  'filter should not visit an appended element unless an earlier element is deleted': function() {
-	var testArray = [1, 2, 3];
-	var filteredArray = filter(testArray, function(el, i, testArray) {
-		if (i === 1) {
-			testArray.push(9);
-		}
-		return el > 2;
+  'find should run callback on missing elements': function() {
+	fail();
+	var weirdArray = [, 1];
+	var mappedArray = find(weirdArray, function(el) {
+		return el * 2;
 	});
-	eq(testArray.length, 4);
-	eq(filteredArray.length, 1);
-	eq(filteredArray[0], 3);
-  },
-  'filter should visit an appended element after an earlier element is deleted': function() {
-	var testArray = [1, 2, 3];
-	var filteredArray = filter(testArray, function(el, i, testArray) {
-		if (i === 0) {
-			testArray.push(9);
-			testArray.splice(0, 1);
-		}
-		return el > 2;
-	});
-	eq(testArray.length, 3);
-	eq(filteredArray.length, 2);
-	eq(filteredArray[0], 3);
-	eq(filteredArray[1], 9);
-  },
-  'filter should not re-visit changed elements at positions it has already visited': function() {
-	var testArray = [1, 2, 3];
-	var filteredArray = filter(testArray, function(el, i, testArray) {
-		if (i === 0) {
-			testArray.splice(0, 1, 9);
-		}
-		return el > 2;
-	});
-	eq(testArray.length, 3);
-	eq(testArray[0], 9);
-	eq(filteredArray.length, 1);
-	eq(filteredArray[0], 3);
-  },
-  'filter should not re-visit deleted elements at positions it has already visited': function() {
-	var testArray = [1, 2, 3];
-	var filteredArray = filter(testArray, function(el, i, testArray) {
-		if (i === 0) {
-			testArray.splice(0, 1);
-		}
-		return el > 2;
-	});
-	eq(testArray.length, 2);
-	eq(testArray[0], 2);
-	eq(filteredArray.length, 1);
-	eq(filteredArray[0], 3);
-  },
-  'filter should process changed elements it visits, not the original values': function() {
-	var testArray = [1, 2, 3];
-	var filteredArray = filter(testArray, function(el, i, testArray) {
-		if (i === 0) {
-			testArray.splice(1, 1, 9);
-		}
-		return el > 2;
-	});
-	eq(testArray.length, 3);
-	eq(testArray[0], 1);
-	eq(testArray[1], 9);
-	eq(filteredArray.length, 2);
-	eq(filteredArray[0], 9);
-	eq(filteredArray[1], 3);
-  },
-  'filter should not process deleted elements at positions it has yet to visit': function() {
-	var testArray = [1, 2, 3];
-	var filteredArray = filter(testArray, function(el, i, testArray) {
-		if (i === 0) {
-			testArray.splice(1, 1);
-		}
-		return el > 2;
-	});
-	eq(testArray.length, 2);
-	eq(testArray[0], 1);
-	eq(testArray[1], 3);
-	eq(filteredArray.length, 1);
-	eq(filteredArray[0], 3);
+	eq(mappedArray.length, 2);
+	eq(0 in mappedArray, false);
+	eq(mappedArray[0], undefined);
+	eq(mappedArray[1], 2);
   }
+ });
 
+/* other tests
 
-});
-
+  'find should not visit an appended element unless an earlier element is removed': function() {
+	fail();
+  },
+  'find should visit an appended element after an earlier element is removed': function() {
+	fail();
+  },
+  'find should not re-visit changed elements at positions it has already visited': function() {
+	fail();
+  },
+  'find should not re-visit removed elements at positions it has already visited': function() {
+	fail();
+  },
+  'find should process changed elements it visits, not the original values': function() {
+	fail();
+  },
+  'find should not process removed elements at positions it has yet to visit': function() {
+	fail();
+*/
