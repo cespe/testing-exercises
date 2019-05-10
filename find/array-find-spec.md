@@ -50,6 +50,7 @@ testArray.find(function(value, index) {
 
 ```javascript
 // an item pushed to array will be visited by find if an earlier item is removed by splice
+// contradicting the MDN docs
 var testArray = [1, 2, 3, 4, 5];
 
 testArray.find(function(value, index) {
