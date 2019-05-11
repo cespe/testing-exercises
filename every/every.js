@@ -1,5 +1,5 @@
 // function under test is every(), based on array.prototype.every()
 
-function every() {
+function every(array, callback) {
 	
 }
