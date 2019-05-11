@@ -10,18 +10,6 @@
 
 tests({
 
-	'every should pass in the ith element as the first argument to the callback': function() {
-		fail();
-		every([1], function(value) {
-			eq(value, 1);
-		});
-	},
-	'every should pass in the ith index as the second argument to the callback': function() {
-		fail();
-		every([1], function(value, index) {
-			eq(index, 0);
-		});
-	},
 	'every should run the callback initial array.length times': function() {
 		fail();
 		var timesCalled = 0;
@@ -35,6 +23,18 @@ tests({
 		});
 		eq(timesCalled, timesToCall);
 		eq(testArray.length, 4);
+	},
+	'every should pass in the ith element as the first argument to the callback': function() {
+		fail();
+		every([1], function(value) {
+			eq(value, 1);
+		});
+	},
+	'every should pass in the ith index as the second argument to the callback': function() {
+		fail();
+		every([1], function(value, index) {
+			eq(index, 0);
+		});
 	},
 	'every should pass in the array as the third argument to the callback': function() {
 		fail();
