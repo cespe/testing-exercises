@@ -10,6 +10,12 @@
 
 tests({
 
+	'every should take an array as its first argument': function() {
+		fail();
+	},
+	'every should take a callback as its second argument': function() {
+		fail();
+	}, 
 	'every should run the callback initial array.length times': function() {
 		fail();
 		var timesCalled = 0;
@@ -74,12 +80,6 @@ tests({
 });
 
 /* other tests
-	'every should take an array as its first argument': function() {
-		fail();
-	},
-	'every should take a callback as its second argument': function() {
-		fail();
-	}, 
 	'every's callback should return true or false': function() {
 		fail();
 	}, 
