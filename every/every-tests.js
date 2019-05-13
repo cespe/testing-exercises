@@ -11,19 +11,16 @@
 tests({
 
 	'every should pass in the ith element as the first argument to the callback': function() {
-		fail();
 		every([1], function(value) {
 			eq(value, 1);
 		});
 	},
 	'every should pass in the ith index as the second argument to the callback': function() {
-		fail();
 		every([1], function(value, index) {
 			eq(index, 0);
 		});
 	},
 	'every should run the callback initial array.length times': function() {
-		fail();
 		var timesCalled = 0;
 		var testArray = [1, 2, 3];
 		var timesToCall = testArray.length;
@@ -37,37 +34,48 @@ tests({
 		eq(testArray.length, 4);
 	},
 	'every should pass in the array as the third argument to the callback': function() {
-		fail();
 		var testArray = [1];
 		every(testArray, function(value, index, array) {
 		eq(array, testArray);
 		});
 	},
 	'every should accept an alternate "this" object to bind to': function() {
-		fail();
 		var altThis = {alternate: true};
 		every([1], function() {
 		eq(altThis, this);
 		}, altThis);
 	},
 	'every should bind "this" to undefined if no alternate "this" is given': function() {
-		fail();
 		every([1], function() {
 		eq(this, window); // according to usual rules for determining the 'this' seen by function
 		});
 	},
 	'every should return "true" if callback never returns "false"': function() {
-		fail();
+		var result = every([1, 2, 3], function(value) {
+			return value < 4;
+		});
+		eq(result, true);
+	},
+	'every should return "true" if array is empty': function() {
+		var result = every([], function(value) {
+			return value < 4;
+		});
+		eq(result, true); // vacuously true since callback is never called
 	},
 	'every should return "false" immediately if callback returns "false"': function() {
-		fail();
+		var firstFalse = 0;
+		var result = every([1, 2, 4, 3], function(value, index) {
+			firstFalse++;
+			return value < 4;
+		});
+		eq(result, false);
+		eq(firstFalse, 3); // avoids spurious pass because returning undefined is falsy
 	},
 	'every should not run callback on missing elements': function() {
-		fail();
 		var timesCalled = 0;
 		var sparseArray = [, 1, 2, , 3];
 		var result = every(sparseArray, function(value, index) {
-		timesCalled++;
+			timesCalled++;
 		});
 		eq(timesCalled, 3);
 	}
