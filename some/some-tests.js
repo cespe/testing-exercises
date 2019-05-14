@@ -51,26 +51,26 @@ tests({
 		eq(this, window); // according to usual rules for determining the 'this' seen by function
 		});
 	},
-	'some should return "true" if callback never returns "false"': function() {
+	'some should return "false" if callback never returns "true"': function() {
 		var result = some([1, 2, 3], function(value) {
-			return value < 4;
+			return value > 4;
 		});
-		eq(result, true);
+		eq(result, false);
 	},
-	'some should return "true" if array is empty': function() {
+	'some should return "false" if array is empty': function() {
 		var result = some([], function(value) {
 			return value < 4;
 		});
-		eq(result, true); // vacuously true since callback is never called
-	},
-	'some should return "false" immediately if callback returns "false"': function() {
-		var firstFalse = 0;
-		var result = some([1, 2, 4, 3], function(value, index) {
-			firstFalse++;
-			return value < 4;
-		});
 		eq(result, false);
-		eq(firstFalse, 3); // avoids spurious pass because returning undefined is falsy
+	},
+	'some should return "true" immediately if callback returns "true"': function() {
+		var firstTrue = 0;
+		var result = some([1, 2, 4, 3], function(value, index) {
+			firstTrue++;
+			return value > 3;
+		});
+		eq(result, true);
+		eq(firstTrue, 3); // avoids spurious pass because returning undefined is falsy
 	},
 	'some should not run callback on missing elements': function() {
 		var timesCalled = 0;
