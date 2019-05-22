@@ -2,7 +2,7 @@
 
 function indexOf(array, searchElement, fromIndex) {
 	var startingIndex = 0;
-	if (fromIndex) {
+	if (Number.isInteger(fromIndex)) {
 		if (fromIndex >= array.length) {
 			return -1;
 		}
