@@ -10,6 +10,7 @@ Returns true if an element matches valueToFind.
 Returns false if no match is found.
 Docs say string comparisons are case-sensitive. Duh.
 Docs say include uses sameValueZero algorithm for matching.
+	0 matches 0, -0 and +0.
 	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness#Same-value-zero_equality
 	The table on that page says sameValueZero produces the same result as ===.
 
@@ -24,10 +25,28 @@ If findIndex is negative, set startingIndex to array.length + findIndex
 
 tests({
 	'includes should return true if an array element matches valueToFind': function() {
-		fail();
+		result = includes([1, 2, 3], 3);
+		eq(result, true);
+		result2 = includes([0], 0);
+		eq(result2, true);
+		result3 = includes([0], -0);
+		eq(result3, true);
+		result4 = includes([0], +0);
+		eq(result4, true);
+		var obj = {};
+		result5 = includes([obj], obj);
+		eq(result5, true);
 	},
-	'includes should return false if no array element matches valueToFind': function() {
+	'includes should return true if it finds a match for valueToFind = NaN': function() {
 		fail();
+	},	
+	'includes should return false if no array element matches valueToFind': function() {
+		result = includes([1, 2, 3], 4);
+		eq(result, false);
+		result2 = includes([{}], {});
+		eq(result2, false);
+		result3 = includes([function(){}], function(){});
+		eq(result3, false);
 	},
 	'If findIndex is not supplied, starting index should be 0': function() {
 		fail();
