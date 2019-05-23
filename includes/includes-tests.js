@@ -23,8 +23,26 @@ If findIndex is negative, set startingIndex to array.length + findIndex
 */
 
 tests({
-	'': function() {
+	'includes should return true if an array element matches valueToFind': function() {
+		fail();
+	},
+	'includes should return false if no array element matches valueToFind': function() {
+		fail();
+	},
+	'If findIndex is not supplied, starting index should be 0': function() {
+		fail();
+	},
+	'If findIndex is a positive integer, starting index should be findIndex': function() {
+		fail();
+	},
+	'If findIndex is not an integer, starting index should be 0': function() {
+		fail();
+	},
+	'If findIndex is a negative integer, starting index should be array.length + findIndex': function() {
 		fail();
 	}
+	//'': function() {
+	//	fail();
+	//}
 });
 
