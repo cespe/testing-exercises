@@ -64,4 +64,6 @@ var fail               = TinyTest.fail.bind(TinyTest),
     assertEquals       = TinyTest.assertEquals.bind(TinyTest),
     eq                 = TinyTest.assertEquals.bind(TinyTest), // alias for assertEquals
     assertStrictEquals = TinyTest.assertStrictEquals.bind(TinyTest),
+	eqstrict		   = TinyTest.assertStrictEquals.bind(TinyTest),  // added alias
     tests              = TinyTest.run.bind(TinyTest);
+
