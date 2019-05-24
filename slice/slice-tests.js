@@ -28,8 +28,38 @@ slice works on "array-like" objects, i.e. objects that are iterable.
  */
 
 tests({
-	'': function() {
+	'slice should return an array': function() {
+		fail();
+	},
+	'With no arguments, slice should return a copy of array': function() {
+		fail();
+	},
+	'If begin is not an integer, slice should start at index 0': function() {
+		fail();
+	},
+	'If begin is an integer < array.length, slice should start at begin': function() {
+		fail();
+	},
+	'If begin is an integer > array.length, slice should return an empty array': function() {
+		fail();
+	},
+	'If begin is a negative integer, starting index should be array.length + begin': function() {
+		fail();
+	},
+	'If end is not an integer, final index should be array.length - 1': function() {
+		fail();
+	},
+	'If end is an integer < array.length, final index should be end - 1': function() {
+		fail();
+	},
+	'If end is an integer > array.length, final index should be array.length - 1': function() {
+		fail();
+	},
+	'If end is a negative integer, final index should be array.length + end': function() {
 		fail();
 	}
+//	'': function() {
+//		fail();
+//	}
 });
 
