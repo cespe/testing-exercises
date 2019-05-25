@@ -1,9 +1,12 @@
 // function slice() is based on array.prototype.slice()
 
-function slice(array, begin) {
+function slice(array, begin, end) {
 	result = [];
 	if (arguments.length === 1) {
 		var startIndex = 0;
+	}
+	if (arguments.length < 3) {
+		var endIndex = array.length - 1;
 	}
 	if (Number.isInteger(begin)) {
 		if (begin >= 0) {
@@ -18,7 +21,22 @@ function slice(array, begin) {
 	} else {
 		startIndex = 0;
 	}
-	for (var i = startIndex; i < array.length; i++) {
+
+	if (Number.isInteger(end)) {
+		if (end >= 0) {
+			if (end <= array.length) {
+				endIndex = end - 1;
+			} else {
+				endIndex = array.length - 1;
+			}
+		} else {
+			endIndex = (array.length - 1) + end;
+		}
+	} else {
+		endIndex = array.length -1;
+	}
+
+	for (var i = startIndex; i <= endIndex; i++) {
 		result.push(array[i]);
 	}
 	return result;

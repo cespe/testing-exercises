@@ -28,7 +28,7 @@ and use === in tests to compare corresponding elements in the result and origina
 	=== produces the correct answer (false) for NaN equal to NaN
 	=== produces the correct answer (true) for -0 and +0
 
-slice works on "array-like" objects, i.e. objects that are iterable.
+slice works on "array-like" objects, i.e. objects with a length property and iterable (indexed) elements. 
 
  */
 
@@ -78,20 +78,42 @@ tests({
 		result = slice(target, 'z')
 		eqstrict(result[0], target[0]);
 	},
-	'If end is an integer < array.length, final index should be end - 1': function() {
-		fail();
+	'If end is a positive integer < array.length, ending index should be end - 1': function() {
+		target = [1, 2, 3, 4];
+		result = slice(target, 1, 2);
+		eqstrict(result[0], target[1]);
 	},
-	'If end is an integer > array.length, final index should be array.length - 1': function() {
-		fail();
+	'If end is a positive integer > array.length, ending index should be array.length - 1': function() {
+		target = [1, 2, 3, 4];
+		result = slice(target, 2, 8);
+		eqstrict(target[2], result[0]);
+		eqstrict(target[3], result[1]);
 	},
-	'If end is a negative integer, final index should be array.length + end': function() {
-		fail();
+	'If end is a negative integer, ending index should be (array.length - 1) + end': function() {
+		target = [1, 2, 3, 4];
+		result = slice(target, 2, -1);
+		eqstrict(target[2], result[0]);
+		eq(result.length, 1);
+		result2 = slice(target, 0, -5);
+		eqstrict(result2.length, 0);
+		eqstrict(result2[0], undefined);
 	},
-	'If end is not an integer, final index should be array.length - 1': function() {
-		fail();
+	'If end is not an integer, ending index should be array.length - 1': function() {
+		target = [1, 2, 3, 4];
+		result = slice(target, 2, 'z');
+		eqstrict(target[2], result[0]);
+		eqstrict(target[3], result[1]);
+		eq(result.length, 2);
+	},
+	'slice should work on array-like objects': function() {
+		// passes with no code change
+		function list() {
+			return slice(arguments);
+		}
+		testList = list(1, 2);
+		eqstrict(testList[0], 1);
+		eqstrict(testList[1], 2);
+		eq(testList.length, 2);
 	}
-//	'': function() {
-//		fail();
-//	}
 });
 
