@@ -8,6 +8,7 @@ separated by commas or a supplied separator.
 
 If an element is not a string, it is converted into a string representation.
 	An undefined or null element is converted to the empty string ''.
+	The docs don't say it, but an empty element is also converted to the empty string.
 If the array is empty, returns an empty string.
 If the array has one element, returns the element in a string with no separator.
 
@@ -17,7 +18,8 @@ If supplied separator is not a string, it is converted to its string representat
 
 Use the addition operator (+) to do the joining, since it converts elements to strings properly
 except for null and undefined.
-	Test for null and undefined and set them to emtpy string.
+	Test for null and undefined and set them to empty string.
+	No need to test for empty element, it is handled correctly by +
 
 array1 = ['str', null];
 array1.join()
@@ -32,23 +34,41 @@ array1.join()
 */
 
 tests({
-	'join should take an array or array-like object and return a string': function() {
-		fail();
+	'join should take an array and return a string': function() {
+		result = undefined;
+		target = [];
+		result = join(target);
+		eq(typeof(result), 'string');
 	},
 	'If the given array is empty, join should return an empty string': function() {
-		fail();
+		result = join([]);
+		eqstrict(result, '');
 	},
 	'If the given array has one element, join should return it in a string with no separator': function() {
-		fail();
+		result = join(['a']);
+		eqstrict(result, 'a');
 	},
 	'If an element is not a string, it should be converted to its string representation': function() {
-		fail();
+		result = join([1]);
+		eqstrict(result, '1');
+		result2 = join([true]);
+		eqstrict(result2, 'true');
+		result3 = join([{}]);
+		eqstrict(result3, '[object Object]');
 	},
-	'If an element is null or undefined, it should be converted to the empty string': function() {
-		fail();
+	'If an element is null, undefined or empty, it should be converted to the empty string': function() {
+		result = join([null]);
+		eqstrict(result, '');
+		result2 = join([undefined]);
+		eqstrict(result2, '');
+		result3 = join([,]);
+		eqstrict(result3, '');
 	},
-	'If no separator is provided, join should concatenate elements separated by commas': function() {
-		fail();
+	'If no separator is provided, join should concatenate multiple elements separated by commas': function() {
+		result = join(['A', 1, 'B', 2]);
+		eqstrict(result, 'A,1,B,2');
+		result2 = join([null, 'a', undefined,, true]);
+		eqstrict(result2, ",a,,,true");
 	},
 	'If a separator is provided, join should use it to separate concatenated elements': function() {
 		fail();
