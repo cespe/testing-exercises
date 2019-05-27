@@ -1,30 +1,27 @@
 // function join() based on array.prototype.join()
 
-function join(array) {
-//	if (array.length === 0) {
-//		return '';
-//	}
-//	if (array.length === 1) {
-//		if (array[0] === null) {
-//			return '';
-//		}
-//		if (array[0] === undefined) {
-//			return '';
-//		} else {
-//			return '' + array[0];
-//		}
-//	} else {
-		var result = '';
-		var element;
+function join(array, separator) {
+	if (separator === undefined) {
+		delimiter = ',';
+	} else {
+		delimiter = '' + separator;
+	}
 
-		for (var i = 0; i < array.length; i++) {
-			if (array[i] === null || array[i] === undefined) {
-				element = '';
-			} else {
-				element = array[i];
-			}
-			result = result + element + ',';
+	var result = '';
+	var element;
+
+	for (var i = 0; i < array.length; i++) {
+		if (array[i] === null || array[i] === undefined) {
+			element = '';
+		} else {
+			element = array[i];
 		}
-		return result.slice(0, -1);
-//	}
+		result = result + element + delimiter;
+	}
+
+	if (delimiter.length === 0) {
+		return result;
+	} else {
+		return result.slice(0, -delimiter.length);
+	}
 }

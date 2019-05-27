@@ -15,6 +15,8 @@ If the array has one element, returns the element in a string with no separator.
 If separator is not supplied, defaults to comma.
 If supplied separator is the empty string '', elements are joined with no separator between them.
 If supplied separator is not a string, it is converted to its string representation.
+	'' + separator works fine for these cases, including null.
+If supplied separator is 'undefined', it is as if argument was not supplied, i.e. defaults to comma.
 
 Use the addition operator (+) to do the joining, since it converts elements to strings properly
 except for null and undefined.
@@ -71,12 +73,25 @@ tests({
 		eqstrict(result2, ",a,,,true");
 	},
 	'If a separator is provided, join should use it to separate concatenated elements': function() {
-		fail();
+		result = join([1, 2, 3], ', ');
+		eqstrict(result, '1, 2, 3');
 	},
 	'If a given separator is an empty string, join should concatenate with no spaces between elements': function() {
-		fail();
+		result = join([1, 2, 3], '');
+		eqstrict(result, '123');
 	},
 	'If a given separator is not a string, join should convert it to its string representation': function() {
-		fail();
+		result2 = join([1, 2, 3], null);
+		eqstrict(result2, '1null2null3');
+		result3 = join([1, 2, 3], undefined);
+		eqstrict(result3, '1,2,3');
+		result4 = join([1, 2, 3], 0);
+		eqstrict(result4, '10203');
+		result5 = join([1, 2, 3], 9.0);
+		eqstrict(result5, '19293');
+		result6 = join(['a', 'b', 'c'], 8.8);
+		eqstrict(result6, 'a8.8b8.8c');
+		result7 = join([1, 2, 3], true);
+		eqstrict(result7, '1true2true3');
 	}
 });
