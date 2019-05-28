@@ -1,20 +1,4 @@
-/*
-Appends one or more elements to the end of an array.
-
-arr.push(element1[, ...[, elementN]])
-
-The maximum number of elements a function can take is limited in practice,
-so don't make the list too long. MDN says see apply() for details.
-
-To work on "objects resembling arrays," push() relies on a length property.
-If the object has no length property, push() will create one.
-If the length property can't be converted to a number, push() will use index 0.
-
-Returns the new length of the array.
-
-Since it mutates the array, it is not suitable for strings, which are immutable,
-or for arguments.
-*/
+// Tests for push() based on array.prototype.push()
 
 tests({
 	'push should take an array and return its length': function() {
@@ -46,22 +30,56 @@ tests({
 	eqstrict(target4[0], obj);
 	eq(target4.length, 1);
 	},
-	'': function() {
-	fail();
+	'If array-resembling object has no length property, push should create it': function() {
+	var obj1 = {};
+	push(obj1, 'a');
+	eq(obj1.length, 1);
 	},
-	'': function() {
-	fail();
+	'If length is not an integer, push should convert it to one': function() {
+	var obj1 = {
+		length: '0'
+	}
+	push(obj1, 5, 6);
+	eqstrict(obj1[0], 5);
+	eqstrict(obj1[1], 6);
+	eqstrict(obj1.length, 2);
+	var obj2 = {
+		length: '2.8'
+	}
+	push(obj2, 6);
+	eqstrict(obj2[2], 6);  // parseInt produces a floor value, i.e. 2.8 --> 2
+	eq(obj2.length, 3);
 	},
-	'': function() {
-	fail();
-	},
-	'': function() {
-	fail();
-	},
-	'': function() {
-	fail();
-	},
-	'': function() {
-	fail();
-	},
+	'If push cannot convert length to an integer, it should append to index 0': function() {
+	var obj = {
+		length: 'abc'
+	}
+	push(obj, 8);
+	eqstrict(obj[0], 8)
+	eqstrict(obj.length, 1);
+	var obj1 = {
+		length: null
+	}
+	push(obj1, 8);
+	eqstrict(obj1[0], 8)
+	eqstrict(obj1.length, 1);
+	var obj2 = {
+		length: NaN
+	}
+	push(obj2, 8);
+	eqstrict(obj2[0], 8)
+	eqstrict(obj2.length, 1);
+	var obj3 = {
+		length: undefined
+	}
+	push(obj3, 8);
+	eqstrict(obj3[0], 8)
+	eqstrict(obj3.length, 1);
+	var obj4 = {
+		length: {}
+	}
+	push(obj4, 8);
+	eqstrict(obj4[0], 8)
+	eqstrict(obj4.length, 1);
+	}
 });
