@@ -1,30 +1,24 @@
 
-tests = ({
-	'': function() {
+tests({
+	'pop should remove the last element in array and return it': function() {
 		fail();
-	}.
-	'': function() {
+	},
+	'pop should decrement array.length after removing element': function() {
 		fail();
-	}.
-	'': function() {
+	},
+	'pop should return undefined if array is empty': function() {
 		fail();
-	}.
-	'': function() {
+	},
+	'If object does not have an indexed element at length, pop should return undefined': function() {
 		fail();
-	}.
-	'': function() {
+	},
+	'if object does not have length property, pop should create one and set it to 0': function() {
 		fail();
-	}.
-	'': function() {
+	},
+	'If length is not convertible to an integer, pop should set it to 0': function() {
 		fail();
-	}.
-	'': function() {
-		fail();
-	}.
-	'': function() {
-		fail();
-	}.
-	'': function() {
+	},
+	'If length is convertible to an integer, pop should convert it and decrement by 1': function() {
 		fail();
 	}
 });

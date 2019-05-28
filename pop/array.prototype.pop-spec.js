@@ -3,15 +3,28 @@
 
  pop() returns undefined if the array is empty.
 
-May be called on objects resembling arrays.
-	If object is empty, pop returns undefined and creates a length property set to 0.
-	If object cannot be converted to a number, pop returns undefined and sets length to 0.
-	Object needs a numerical length property and an indexed element corresponding to length
-	in order to return a meaningful result.
-		Otherwise, it returns undefined and decrements length if it is an integer.
+Try the delete operator and manually decrementing array.length.
 
+May be called on objects resembling arrays.
 */
 
+// If object is "array-like" then pop should work normally
+// "Array-like" means having an integer length property and corresponding indexed elements
+obj = {}
+{}
+[].push.call(obj, 1, 2, 3)
+3
+obj
+{0: 1, 1: 2, 2: 3, length: 3}
+[].pop.call(obj)
+3
+obj
+{0: 1, 1: 2, length: 2}
+
+// Otherwise, pop always returns undefined and ...
+// If there is no length, pop creates it and sets it to 0
+// If length is non-numeric, pop sets it to 0
+// If length is an integer but with no corresponding element, pop decrements length
 
 obj2
 {0: 1, length: 1}
