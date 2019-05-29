@@ -12,8 +12,17 @@ tests({
 	},
 	'shift should return undefined if array is empty': function() {
 		fail();
+	},
+	'If object does not have an element at index 0, shift should return undefined': function() {
+		fail();
+	},
+	'If object has no length property, shift should add it, set it to 0, and return undefined': function() {
+		fail();
+	},
+	'If length is non-numeric, shift should set it to 0 and return undefined': function() {
+		fail();
+	},
+	'If length is convertible to an integer, shift should convert it and decrement by 1': function() {
+		fail();
 	}
-//	'If object does not have an element at index 0, shift should return undefined': function() {
-//		fail();
-//	},
 });
