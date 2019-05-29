@@ -8,6 +8,10 @@ element. Then array.length must be decremented.
 
 Returns undefined if the array is empty.
 
-shift() works on objects resembling arrays just like pop().
+shift() works normally on objects resembling arrays just like pop().
+
+An object resembles an array by having 1) a length property convertible to an integer and
+having 2) corresponding indexed elements.
+
 
 */
