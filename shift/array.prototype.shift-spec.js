@@ -40,8 +40,17 @@ obj7 = {
 obj7
 {0: "two", 1: "three", length: 2}
 
-// if there is no element 0, shift returns undefined but shifts elements and decrements length.
-// in this case, it actually creates index 0 for the shift left!
+// If there is no element 0, shift returns undefined and decrements length
+obj9 = {
+	length: 5
+}
+{length: 5}
+[].shift.call(obj9)
+undefined
+obj9
+{length: 4}
+
+// if there is no element 0 but there is element 1, shift creates index 0 and sets it to index 1
 obj6 = {
 	1: 'two',
 	2: 'three',
@@ -52,6 +61,18 @@ obj6 = {
 undefined
 obj6
 {0: "two", 2: "three", length: 1}
+
+// if there is no element 0 and no element 1, shift ignores any other indexed elements
+ojb8 = {
+	2: 'three',
+	3: 'four',
+	length: 2
+}
+{2: "three", 3: "four", length: 2}
+[].shift.call(ojb8);
+undefined
+ojb8
+{2: "three", 3: "four", length: 1}
 
 // length does not have to be correct for shift to work, it just has to be there:
 obj3 = {
@@ -119,4 +140,13 @@ undefined
 obj5
 {0: "one", 1: "two", 3: "three", length: 0}
 
+// shift works normally on sparse arrays
+var arr1 = [,,,1,,];
+undefined
+arr1
+(5) [empty × 3, 1, empty]
+arr1.shift()
+undefined
+arr1
+(4) [empty × 2, 1, empty]
 
