@@ -17,6 +17,15 @@ function shift(array) {
 		return undefined;
 	}
 
+	if (0 in array === false) {
+		if (1 in array === true) {
+			array[0] = array[1];
+			delete(array[1]);
+		}
+		array.length = array.length - 1;
+		return undefined;
+	}
+
 	var result = array[0];
 	
 	for (var i = 0; i < array.length; i++) {

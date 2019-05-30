@@ -45,10 +45,13 @@ tests({
 		eq(target.length, 1);
 	},
 	'If object length property is an integer, shift should decrement it': function() {
-		fail();
+		target = {
+			length: 5
+		}
+		shift(target);
+		eq(target.length, 4);
 	},
 	'If object does not have an element at index 0, shift should return undefined': function() {
-		fail();
 		target = {};
 		result = shift(target);
 		eqstrict(result, undefined);
@@ -58,14 +61,42 @@ tests({
 		}
 		result = shift(target2);
 		eqstrict(result, undefined);
-//		eq(target2[0], 'two');
-//		eq(target2[1], undefined);
-//		eq(target.length, 0);
 	},
 	'If object has element at index 1 but not at 0, shift should create index 0 and set it to index 1': function() {
-		fail();
+		target = {
+			1: 'two',
+			2: 'three',
+			length: 2
+		}
+		result = shift(target);
+		eqstrict(result, undefined);
+		eqstrict(target[0], 'two');
+		eqstrict(target[2], 'three');
+	},
+	'If object has element at index 1 but not at 0, shift should remove index 1': function() {
+		target = {
+			1: 'two',
+			2: 'three',
+			length: 2
+		}
+		result = shift(target);
+		eqstrict(result, undefined);
+		eqstrict(target[0], 'two');
+		eq(1 in target, false);
+		eqstrict(target[2], 'three');
 	},
 	'If object has no element at index 0 or 1, shift should ignore any other indexed elements': function() {
-		fail();
+		target = {
+			2: 'three',
+			3: 'four',
+			length: 2
+		}
+		result = shift(target);
+		eqstrict(result, undefined);
+		eq(0 in target, false);
+		eq(1 in target, false);
+		eqstrict(target[2], 'three');
+		eqstrict(target[3], 'four');
+		eq(target.length, 1);
 	}
 });
