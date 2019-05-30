@@ -18,22 +18,14 @@ tests({
 	'unshift should take zero or more values and prepend them to array': function() {
 		fail();
 	},
-	'': function() {
+	'If object resembling array has no length property, unshift should add it': function() {
 		fail();
 	},
-	'': function() {
+	'If length is not a number, unshift should set it to 0': function() {
 		fail();
 	},
-	'': function() {
+	'If length is convertible to an integer, unshift should convert it': function() {
 		fail();
-	},
-	'': function() {
-		fail();
-	},
-	'': function() {
-		fail();
-	},
-	'': function() {
-		fail();
-	},
+	}
 });
+
