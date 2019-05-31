@@ -91,7 +91,14 @@ tests({
 		eqstrict(target4[2], 'c');
 		eq(result4, 3);
 		eq(target4.length, 3);
+		target5 = [,];								// sparse array, one value
+		result5 = unshift(target5, 'a');
+		eqstrict(target5[0], 'a');
+		eqstrict(target5[1], undefined);
+		eq(result5, target5.length);
 
 	}
 });
+
+// Could add a test to document/produce weird behavior noted in array.prototype.unshift-spec.js
 
