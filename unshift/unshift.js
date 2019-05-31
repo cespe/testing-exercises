@@ -3,12 +3,10 @@
 function unshift(array, values) {
 	if ('length' in array === false) {
 		array.length = 0;
-	}
-	if (!Number(array.length)) {
-		array.length = 0;
 	} else {
+		array.length = Number.parseInt(array.length);
 		if (!Number.isInteger(array.length)) {
-			array.length = Number.parseInt(array.length);
+			array.length = 0;
 		}
 	}
 	

@@ -39,6 +39,12 @@ tests({
 		result = unshift(target);
 		eq(result, 2);
 		eq(target.length, 2);
+		target2 = {
+			length: '3'
+		}
+		result = unshift(target2);
+		eq(result, 3);
+		eq(target2.length, 3)
 	},
 	'unshift should take zero or more values and prepend them to array': function() {
 		target = [];
