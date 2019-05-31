@@ -48,30 +48,30 @@ tests({
 	},
 	'unshift should take zero or more values and prepend them to array': function() {
 		target = [];
-		result = unshift(target);
+		result = unshift(target);					// empty array, zero values
 		eqstrict(target[0], undefined);
 		eq(result, target.length);
 		eq(result, 0);
 		target0 = [];
-		result0 = unshift(target0, 'a');
+		result0 = unshift(target0, 'a');			// empty array, one value
 		eqstrict(target0[0], 'a');
 		eq(result0, target0.length);
 		eq(result0, 1);
 		target1 = ['b'];
-		result1 = unshift(target1, 'a');
+		result1 = unshift(target1, 'a');			// one-element array, one value
 		eqstrict(target1[0], 'a');
 		eqstrict(target1[1], 'b');
 		eq(result1, target1.length);
 		eq(result1, 2);
 		target2 = ['b', 'c', 'd'];
-		result2 = unshift(target2, 'a');
+		result2 = unshift(target2, 'a');			// three-element array, one value
 		eqstrict(target2[0], 'a');
 		eqstrict(target2[1], 'b');
 		eqstrict(target2[2], 'c');
 		eqstrict(target2[3], 'd');
 		eq(result2, target2.length);
 		target3 = ['d', 'e', 'f'];
-		result3 = unshift(target3, 'a', 'b', 'c');
+		result3 = unshift(target3, 'a', 'b', 'c');	// three-element array, three values
 		eq(result3, target3.length);
 		eq(result3, 6);
 		eqstrict(target3[0], 'a');
@@ -80,6 +80,18 @@ tests({
 		eqstrict(target3[3], 'd');
 		eqstrict(target3[4], 'e');
 		eqstrict(target3[5], 'f');
+		target4 = {
+			0: 'b',
+			1: 'c',
+			length: 2
+		}
+		result4 = unshift(target4, 'a');			// two-element well-formed object, one value
+		eqstrict(target4[0], 'a');
+		eqstrict(target4[1], 'b');
+		eqstrict(target4[2], 'c');
+		eq(result4, 3);
+		eq(target4.length, 3);
+
 	}
 });
 

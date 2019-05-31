@@ -11,12 +11,14 @@ function unshift(array, values) {
 	}
 	
 	if (arguments.length > 1) {
-//		array.length = array.length + (arguments.length - 1);
 		for (var k = arguments.length - 1; k > 0; k--) {
 			for (var i = array.length; i > 0; i--) {
 				array[i] = array[i - 1];
 			}
 			array[0] = arguments[k];
+			if (!Array.isArray(array)) {
+				array.length++;		// must manually increment length in object
+			}
 		}
 	}
 	return array.length;
