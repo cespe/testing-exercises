@@ -4,7 +4,9 @@ function fill(array, value, start, end) {
 	if (arguments.length === 1) {
 		return array;
 	}
-
+	if ('length' in array === false) {
+		return array;
+	}
 	if (start === undefined) {
 		startIndex = 0;
 	} else {
