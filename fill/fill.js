@@ -1,17 +1,32 @@
 // function fill() based on array.prototype.fill()
 
 function fill(array, value, start, end) {
-	if (arguments.length < 2) {
+	if (arguments.length === 1) {
 		return array;
-	} else
-		if (arguments.length < 3) {
-			var start = 0;
+	}
+
+	if (start === undefined) {
+		startIndex = 0;
+	} else {
+		if (start < 0) {
+			startIndex = array.length + start;
+		} else {
+			startIndex = start;
 		}
-		if (arguments.length < 4) {
-			var end = array.length;
+	}
+
+	if (end === undefined) {
+		endIndex = array.length;
+	} else {
+		if (end < 0) {
+			endIndex = array.length + end;
+		} else {
+			endIndex = end;
 		}
-		for (var i = start; i < end; i++) {
-			array[i] = value;
-		}
-		return array;
+	}
+
+	for (var i = startIndex; i < endIndex; i++) {
+		array[i] = value;
+	}
+	return array;
 }

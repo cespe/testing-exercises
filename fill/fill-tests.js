@@ -30,13 +30,13 @@ tests({
 		eqstrict(result, target);
 		eqstrict(target[0], 'x');
 	},
-	'if a start value is not provided, start should default to 0': function() {
+	'if start is undefined, fill should set start to 0': function() {
 		target = [1, 2];
 		result = fill(target, 'x');
 		eqstrict(result, target);
 		eqstrict(target[0], 'x');
 	},
-	'if an end value is not provided, end should default to array.length': function() {
+	'if end is undefined, fill should set end to array.length': function() {
 		target = [1, 2];
 		result = fill(target, 'x');
 		eqstrict(result, target);
@@ -59,7 +59,12 @@ tests({
 		eqstrict(target[2], 3);
 	},
 	'If start is negative, fill should start at index array.length + start': function() {
-		fail();
+		target = [1, 2, 3];
+		result = fill(target, 'x', -1);
+		eqstrict(result, target);
+		eqstrict(target[0], 1);
+		eqstrict(target[1], 2);
+		eqstrict(target[2], 'x');
 	},
 	'If end is negative, fill should stop at index array.length - 1 + start': function() {
 		fail();
