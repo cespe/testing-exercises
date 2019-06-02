@@ -17,4 +17,23 @@ Works on objects resembling arrays like fill(), shift(), etc.
 		{4: 2, 7: 1, length: 8}
 */
 
-
+tests({
+	'reverse should take an array or object resembling array and return it': function() {
+		fail();
+	},
+	'reverse should return unmutated object if length is missing': function() {
+		fail();
+	},
+	'reverse should return unmutated object if length evaluates to NaN': function() {
+		fail();
+	},
+	'reverse should reverse elements in place': function() {
+		fail();
+	},
+	'reverse should create missing index properties if necessary': function() {
+		fail();
+	},
+	'reverse should remove index properties when not needed': function() {
+		fail();
+	}
+});
