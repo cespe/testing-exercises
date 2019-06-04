@@ -19,19 +19,41 @@ Works on objects resembling arrays.
 
 tests({
 	'copyWithin should take an array and return it': function() {
-		fail();
+		arr = [1, 2, 3];
+		result = copyWithin(arr);
+		eqstrict(result, arr);
 	},
 	'copyWithin should not change array.length': function() {
-		fail();
+		// no code change needed to pass
+		arr = [1, 2, 3];
+		var originalLength = arr.length;
+		result = copyWithin(arr);
+		eqstrict(result.length, originalLength);
 	},
 	'copyWithin should take target and copy entire array to it by default': function() {
-		fail();
+		arr = [1, 2, 3];
+		result = copyWithin(arr, 0);
+		eqstrict(result, arr);
+		eqstrict(arr[0], 1);
+		eqstrict(arr[1], 2);
+		eqstrict(arr[2], 3);
 	},
 	'copyWithin does not copy if target >= array.length': function() {
-		fail();
+		// no code change needed to pass
+		arr = [1, 2, 3];
+		result = copyWithin(arr, 5);
+		eqstrict(arr[0], 1);
+		eqstrict(arr[1], 2);
+		eqstrict(arr[2], 3);
 	},
 	'copyWithin should trim slice to fit array.length - target if necessary': function() {
-		fail();
+		// no code change needed to pass
+		arr = [1, 2, 3];
+		result = copyWithin(arr, 1);
+		eqstrict(result, arr);
+		eqstrict(arr[0], 1);
+		eqstrict(arr[1], 1);
+		eqstrict(arr[2], 2);
 	},
 	'If target is positive, copyWithin should start copying at that index': function() {
 		fail();
