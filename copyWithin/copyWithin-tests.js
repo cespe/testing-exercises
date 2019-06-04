@@ -38,7 +38,7 @@ tests({
 		eqstrict(arr[1], 2);
 		eqstrict(arr[2], 3);
 	},
-	'copyWithin does not copy if target >= array.length': function() {
+	'copyWithin should not copy if target >= array.length': function() {
 		// no code change needed to pass
 		arr = [1, 2, 3];
 		result = copyWithin(arr, 5);
@@ -56,10 +56,33 @@ tests({
 		eqstrict(arr[2], 2);
 	},
 	'If target is positive, copyWithin should start copying at that index': function() {
-		fail();
+		// no code change needed to pass
+		arr = [1, 2, 3, 4];
+		result = copyWithin(arr, 2);
+		eqstrict(result, arr);
+		eqstrict(arr[0], 1);
+		eqstrict(arr[1], 2);
+		eqstrict(arr[2], 1);
+		eqstrict(arr[3], 2);
 	},
 	'If target is negative, copyWithin should start copying at array.length + target': function() {
-		fail();
+		arr = [1, 2, 3, 4];
+		result = copyWithin(arr, -2);
+		eqstrict(result, arr);
+		eqstrict(arr[0], 1);
+		eqstrict(arr[1], 2);
+		eqstrict(arr[2], 1);
+		eqstrict(arr[3], 2);
+		arr1 = [1, 2, 3, 4];
+	},
+		'If array.length + target < 0, copyWithin should not copy': function() {
+		arr1 = [1, 2, 3, 4];
+		result1 = copyWithin(arr1, -8);
+		eqstrict(result1, arr1);
+		eqstrict(arr1[0], 1);
+		eqstrict(arr1[1], 2);
+		eqstrict(arr1[2], 3);
+		eqstrict(arr1[3], 4);
 	},
 	'If start is positive, copyWithin should slice from that index': function() {
 		fail();

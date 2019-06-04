@@ -6,7 +6,15 @@ function copyWithin(array, target) {
 		slice[i] = array[i];
 	}
 	var startIndex = 0;
-	for (var k = target; k < array.length; k++) {
+	var targetIndex = target;
+	if (target < 0) {
+		targetIndex = array.length + target;
+		if (targetIndex < 0) {
+			return array;
+		}
+	}
+
+	for (var k = targetIndex; k < array.length; k++) {
 		array[k] = slice[startIndex];
 		startIndex++;
 	}
