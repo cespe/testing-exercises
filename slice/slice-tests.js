@@ -13,15 +13,14 @@ begin and end are optional arguments that have meaning if they are integers
 		If |begin| > array.length, set starting index to 0
 
 
-	If begin is not supplied or undefined or otherwise not an integer, slice starts at 0
+	If begin is not supplied or undefined or otherwise not an integer , slice starts at 0
 
 	If end < array.length, the index of last element extracted is end - 1.
 	If end > array.length, extracts through index array.length - 1.
 	If end is negative, ending index is array.length + end.
 		If |end| > array.length, returns an empty array.
 
-	If end is not supplied or undefined or otherwise not an integer, extracts through
-	array.length -1.
+	If end is not supplied or undefined or otherwise not a number, extracts through array.length -1.
 
 slice() makes a shallow copy, so use newArray.push() to add elements to result array
 and use === in tests to compare corresponding elements in the result and original arrays.
@@ -98,12 +97,17 @@ tests({
 		eqstrict(result2.length, 0);
 		eqstrict(result2[0], undefined);
 	},
-	'If end is not an integer, ending index should be array.length - 1': function() {
+	'If end is undefined or NaN, ending index should be array.length - 1': function() {
 		target = [1, 2, 3, 4];
-		result = slice(target, 2, 'z');
+		result = slice(target, 2, undefined);
 		eqstrict(target[2], result[0]);
 		eqstrict(target[3], result[1]);
 		eq(result.length, 2);
+		target1 = [1, 2, 3, 4];
+		result1 = slice(target1, 2, 'z');
+		eqstrict(target1[2], result1[0]);
+		eqstrict(target1[3], result1[1]);
+		eq(result1.length, 2);
 	},
 	'slice should work on array-like objects': function() {
 		// passes with no code change
