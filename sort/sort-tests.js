@@ -35,38 +35,29 @@ tests({
 			eq(a, 'a');
 		});
 	},
-	'sort should pass a second, later element for comparison as the second argument to the callback': function() {
+	'sort should pass a second element for comparison as the second argument to the callback': function() {
 		sort(['a', 'b'], function(a, b) {
 			eq(b, 'b');
 		});
 	},
-	'Callback should return a negative number if first element < second element'() {
-		// no code change, only the callback is tested
-		function compareTest(a, b) {
-			return a - b;
-		}
-		result = compareTest(1, 3);
-		eq(result, -2);
-	},
-	'Callback should return a positive number if first element > second element'() {
-		// no code change, only the callback is tested
-		function compareTest(a, b) {
-			return a - b;
-		}
-		result = compareTest(3, 1);
-		eq(result, 2);
-	},
-	'Callback should return 0 if first element == second element'() {
-		// no code change, only the callback is tested
-		function compareTest(a, b) {
-			return a - b;
-		}
-		result = compareTest(3, 3);
-		eq(result, 0);
-	},
-	'sort should put second element before the first if callback returns a positive number': function() {
-	// true to the docs, but vague; the implementation swaps the two elements
+	'Callback(a, b) should return a negative number if a < b and a should be sorted lower than b': function() {
 		fail();
+		function compareNumber(a, b) {
+			return a - b;
+		}
+	},
+	'Callback(a, b) should return 0 if a === b and sort should leave them alone with respect to each other': function() {
+		fail();	
+	},
+	'Callback(a, b) should return a positive number if a > b and a should be sorted higher than b': function() {
+		fail();
+		var arr = [2, 1];
+		function compareNumbers(a, b) {
+			return a - b;
+		}
+		result = sort(arr, compareNumbers);
+		eqstrict(arr[0], 1);
+		eqstrict(arr[1], 2);
 	},
 	'sort should move all empty index positions to the end of the array': function() {
 		fail();

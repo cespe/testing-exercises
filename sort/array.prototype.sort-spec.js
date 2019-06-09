@@ -69,5 +69,9 @@ function compareNumbers(a, b) {
 numbers.sort(compareNumbers)
 //(6) [1, 2, 3, 4, 5, 10]
 
+['anchor', 'Anchovy', 'big', 'Big', 'BIG'].sort()
+//(5) ["Anchovy", "BIG", "Big", "anchor", "big"]
+
+// All of the above are covererd by concatenation to an empty string
 
 
