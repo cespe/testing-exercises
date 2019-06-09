@@ -7,7 +7,7 @@ tests({
 		eqstrict(result, arr);
 	},
 	'If no callback is provided, sort should sort elements into UTF-16 order': function() {
-		// function as coded leaves this to Javascript string comparison; could use a test case
+		// function as coded leaves this to Javascript string comparison; needs a unicode test case
 		var arr1 = ['b', 'd', 'c', 'a'];
 		var result1 = sort(arr1);
 		eqstrict(arr1[0], 'a');
@@ -65,10 +65,13 @@ tests({
 		eq(result, 0);
 	},
 	'sort should put second element before the first if callback returns a positive number': function() {
-	// true but vague; the implementation swaps the two elements
+	// true to the docs, but vague; the implementation swaps the two elements
 		fail();
 	},
 	'sort should move all empty index positions to the end of the array': function() {
+		fail();
+	},
+	'sort should move all undefined elements to the end of array but before empty index positions': function() {
 		fail();
 	}
 });
