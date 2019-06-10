@@ -14,12 +14,10 @@ compareFunction(firstEl, secondEl)
 firstEl is the first element for comparison.
 secondEl is the second element for comparison.
 
-All undefined or empty elements are sorted to the end of the array with no call to
-compareFunction.
-	Probably use filter() to get the real values, keep count on the empties, and
-	add them back to array.length at the end
-
-So, the compare function has the following form:
+The docs say "all undefined or empty elements are sorted to the end of the array with
+no call to compareFunction." empty elements go last, following undefined elements. 
+	
+The compare function has the following form:
 
 function compare(a, b) {
   if (a is less than b by some ordering criterion) {
