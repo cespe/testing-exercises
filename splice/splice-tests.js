@@ -19,7 +19,7 @@
  * 	3. If deleteCount <= 0, do not remove any elements.
  *
  * 	Optional items
- * 	1. Add items beginning at start, displacing existing elements to the right.
+ * 	1. Add items beginning at start, moving existing elements to the right.
  *
  * Questions
  * 	Coordinate the actions of deleteCount and adding items?
@@ -27,19 +27,37 @@
  */
 
 tests({
-	'': function() {
+	'splice should accept an array as its first argument and return a new array': function() {
 		fail();
 	},
-	'': function() {
+	"splice's second argument should be start, the index at which to begin splicing": function() {
 		fail();
 	},
-	'': function() {
+	'Without optional arguments, splice should delete elements from start index to end of array': function() {
 		fail();
 	},
-	'': function() {
+	'splice should put deleted elements, if any, in the returned array': function() {
 		fail();
 	},
-	'': function() {
+	'If start > array.length, splice should set start to array.length': function() {
+		fail();
+	},
+	'If start < 0, splice should set start to array.length + start': function() {
+		fail();
+	},
+	'If start < 0 and array.length + start < 0, splice should set start 0': function() {
+		fail();
+	},
+	'splice should accept a third argument, deleteCount, and remove that number of elements': function() {
+		fail();
+	},
+	'If deleteCount >= array.length, splice should remove elements to end of array': function() {
+		fail();
+	},
+	'If deleteCount <= 0, splice should not remove any elements': function() {
+		fail();
+	},
+	'If additional arguments are supplied, splice should add them as elements beginning from start': function() {
 		fail();
 	}
 });
