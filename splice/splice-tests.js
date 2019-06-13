@@ -1,4 +1,6 @@
 // tests for splice(), based on array.prototype.splice()
+// covers standard behavior as well as behavior with parameters of the wrong type
+// does not cover objects resembling arrays on this first pass
 
 tests({
 	'splice should accept an array as its first argument and return a new array': function() {
