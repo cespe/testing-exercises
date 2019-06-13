@@ -29,13 +29,12 @@ function splice(array, start, deleteCount, items) {
 	if (arguments.length > 2) {
 		if (deleteCount > 0) {
 			var k = 0;
-			for (var i = start; i <= deleteCount + start; i++) {
+			for (var i = start; i < deleteCount + start; i++) {
 				result[k] = array[i];
 				k++;
 			}
 			if (start + deleteCount < array.length) {
-				var stop = array.length - (start + deleteCount);
-				for (var j = start; j <= stop; j++) {
+				for (var j = start; j < start + deleteCount; j++) {
 					array[j] = array[j + k];
 				}
 			}

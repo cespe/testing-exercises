@@ -59,13 +59,14 @@ tests({
 		eqstrict(result[1], 3);
 		eqstrict(result[2], 4);
 		eqstrict(result.length, 3);
-		
+
+		//debugger;
 		var arr = [1, 2, 3, 4, 5];
 		result = splice(arr, 3, 1);		// start > deleteCount
 		eqstrict(arr[0], 1);
 		eqstrict(arr[1], 2);
 		eqstrict(arr[2], 3);
-		eqstrict(arr[3], 2);
+		eqstrict(arr[3], 5);
 		eq(arr.length, 4);
 		eqstrict(result[0], 4);
 		eqstrict(result.length, 1);
