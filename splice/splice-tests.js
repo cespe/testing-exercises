@@ -1,6 +1,7 @@
 // tests for splice(), based on array.prototype.splice()
-// covers standard behavior as well as behavior with parameters of the wrong type
-// does not cover objects resembling arrays on this first pass
+// covers standard behavior
+// covers behavior with parameters of the wrong type
+// does not cover objects resembling arrays 
 
 tests({
 	'splice should accept an array as its first argument and return a new array': function() {
@@ -60,7 +61,6 @@ tests({
 		eqstrict(result[2], 4);
 		eqstrict(result.length, 3);
 
-		//debugger;
 		var arr = [1, 2, 3, 4, 5];
 		result = splice(arr, 3, 1);		// start > deleteCount
 		eqstrict(arr[0], 1);
@@ -108,6 +108,9 @@ tests({
 
 		var arr = ['a', 'b', 'f', 'f', 'g'];
 		result = splice(arr, 2, 1, 'c', 'd', 'e');
+		eqstrict(result.length, 1);
+		eqstrict(result[0], 'f');
+		eqstrict(arr.length, 7);
 		eqstrict(arr[0], 'a');
 		eqstrict(arr[1], 'b');
 		eqstrict(arr[2], 'c');
@@ -115,8 +118,5 @@ tests({
 		eqstrict(arr[4], 'e');
 		eqstrict(arr[5], 'f');
 		eqstrict(arr[6], 'g');
-		eqstrict(result.length, 1);
-		eqstrict(result[0], 'f');
-		eqstrict(arr.length, 7);
 	}
 });

@@ -34,21 +34,29 @@ function splice(array, start, deleteCount, items) {
 				k++;
 			}
 			if (start + deleteCount < array.length) {
-				for (var j = start; j < start + deleteCount; j++) {
+				// shift elements left to replace elements targeted for deletion
+				for (var j = start; j <= start + deleteCount; j++) {
 					array[j] = array[j + k];
 				}
 			}
 			array.length = array.length - k;
 		}
-		if (arguments.length > 3) {
-			var itemCount = arguments.length - 3;
-			var itemIndex = 3;		// starting index for items to add
 
-			for (var h = start; h <= itemCount; h++) {
-				for (var g = array.length; g > start; g--) {
-					array[g] = array[g - 1];
-				}
-				array[h] = arguments[itemIndex];
+		if (arguments.length > 3) {
+			var itemCount = arguments.length - 3;	// number of items to insert
+			var itemIndex = 3;						// starting index for items to insert
+
+			// shift elements right to make room for insertions
+			var shiftIndex = array.length - 1;
+			var newEndOfArray = array.length - 1 + itemCount;
+			for (var i = newEndOfArray; i > start; i--) {
+				array[i] = array[shiftIndex];
+				shiftIndex--;
+			}
+			
+			// insert itemCount items beginning at start
+			for (var i = start; i < start + itemCount; i++) {
+				array[i] = arguments[itemIndex];
 				itemIndex++;
 			}
 		}
