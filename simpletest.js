@@ -11,6 +11,13 @@ var TinyTest = {
         var failures = 0;
 		var successes = 0;
 		var numberOfTests = 0;
+		function testText(numberOfTests) {
+			if (numberOfTests === 1) {
+				return " test, ";
+			} else {
+				return " tests, ";
+			}
+		}
         for (var testName in tests) {
 			numberOfTests++;
             var testAction = tests[testName];
@@ -30,7 +37,7 @@ var TinyTest = {
             if (window.document && document.body) {
                 document.body.style.backgroundColor = (failures == 0 ? '#99ff99' : '#ff9999');
 				// Render statistics to DOM
-				document.body.innerText = "Ran " + numberOfTests + " tests, " + successes + " passing and " + failures + " failing."
+				document.body.innerText = "Ran " + numberOfTests + testText(numberOfTests) + successes + " passing and " + failures + " failing."
             }
         }, 0);
     },
@@ -62,8 +69,8 @@ var TinyTest = {
 var fail               = TinyTest.fail.bind(TinyTest),
     assert             = TinyTest.assert.bind(TinyTest),
     assertEquals       = TinyTest.assertEquals.bind(TinyTest),
-    eq                 = TinyTest.assertEquals.bind(TinyTest), // alias for assertEquals
+    eq                 = TinyTest.assertStrictEquals.bind(TinyTest), // alias for assertEquals in original, changed here to Strict
     assertStrictEquals = TinyTest.assertStrictEquals.bind(TinyTest),
-	eqstrict		   = TinyTest.assertStrictEquals.bind(TinyTest),  // added alias
+//	eqstrict		   = TinyTest.assertStrictEquals.bind(TinyTest),  // added alias
     tests              = TinyTest.run.bind(TinyTest);
 
