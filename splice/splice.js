@@ -12,8 +12,8 @@ function splice(array, start, deleteCount, items) {
 			start = 0;
 		}
 	}
-	if (deleteCount >= array.length) {
-		deleteCount = array.length - 1;
+	if (deleteCount + start > array.length) {
+		deleteCount = array.length - start;
 	}
 	if (arguments.length < 2) {
 		return []
