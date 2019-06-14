@@ -12,9 +12,22 @@ function splice(array, start, deleteCount, items) {
 			start = 0;
 		}
 	}
+	if (!Number.isInteger(start)) {
+		start = Number.parseInt(start);
+		if (Number.isNaN(start)) {
+			start = 0;
+		}
+	}
 	if (deleteCount + start > array.length) {
 		deleteCount = array.length - start;
 	}
+	if (!Number.isInteger(deleteCount)) {
+		deleteCount = Number.parseInt(deleteCount);
+		if (Number.isNaN(deleteCount)) {
+			deleteCount = 0;
+		}
+	}
+
 	if (arguments.length < 2) {
 		return []
 	}

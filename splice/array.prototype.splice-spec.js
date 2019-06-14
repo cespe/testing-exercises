@@ -26,10 +26,12 @@
  * 		First delete, then add, to match behavior of array.splice.
  * 	The docs are thin. Investigate behavior on e.g. array-like objects? Non-numeric start and deleteCount?
  * 		If start is NaN or undefined, set start to 0.
- * 		If start is missing, throw SyntaxError
+ * 		If start is non-numeric, convert it to an integer if possible.
+ * 		If start is missing, throw SyntaxError (no code change needed, this is the default for a missing argument)
  * 		If deleteCount is NaN or undefined, don't delete anything
+ * 		If deleteCount is non-numeric, convert it to an integer if possible.
  * 		If deleteCount is missing, delete to end of array
- * 		If an early argument is missing (, 1) or (1,,'a') throw a SyntaxError; (1,) is okay though 
+ * 		If an early argument is missing (, 1) or (1,,'a') throw a SyntaxError; (1,) is okay though (default for arguments)
  */
 
 arr,splice(5)			// start > array.length, set start to array.length

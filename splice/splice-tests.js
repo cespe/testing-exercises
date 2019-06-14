@@ -55,7 +55,6 @@ tests({
 		eqstrict(arr[2] in arr, false);
 	},
 	'If start is non-numeric, splice should convert it to an integer if possible': function() {
-		fail();
 		var arr = [1, 2, 3];
 		result = splice(arr, '1.2');
 		eqstrict(result.length, 2);
@@ -65,7 +64,6 @@ tests({
 		eqstrict(arr[0], 1);
 	},
 	'If start is undefined or evaluates to NaN, splice should set it to 0': function() {
-		fail();
 		var arr = [1, 2];
 		result = splice(arr, 'xyz');
 		eqstrict(result.length, 2);
@@ -151,7 +149,6 @@ tests({
 		eqstrict(result.length, 0);
 	},
 	'If deleteCount is non-numeric, splice should convert it to an integer if possible': function() {
-		fail();
 		var arr = [1, 2, 3];
 		result = splice(arr, 0, '1.2');
 		eqstrict(result.length, 1);
@@ -161,7 +158,6 @@ tests({
 		eqstrict(arr[1], 3);
 	},
 	'If deleteCount is undefined or evaluates to NaN, splice should set it to 0': function() {
-		fail();
 		var arr = [1, 2];
 		result = splice(arr, 0, 'xyz');
 		eqstrict(result.length, 0);
