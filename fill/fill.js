@@ -1,6 +1,6 @@
 // function fill() based on array.prototype.fill()
 
-function fill(array, value, start, end) {
+function fill(array, value /* optional */, start, end) {
 	if (arguments.length === 1) {
 		return array;
 	}

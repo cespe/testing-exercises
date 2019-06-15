@@ -1,4 +1,5 @@
 // TDD tests for shift(), based on array.prototype.shift()
+// See array.prototype.shift-spec.js for notes and console tests.
 
 tests({
 	'shift should return the first element in supplied array': function() {
@@ -15,18 +16,18 @@ tests({
 	'shift should delete the last element and decrement array.length': function() {
 		var target = [1, 2, 3];
 		result = shift(target);
-		eqstrict(target[2], undefined);
+		eq(target[2], undefined);
 		eq(target.length, 2);
 	},
 	'shift should return undefined if array is empty': function() {
 		result = shift([]);
-		eqstrict(result, undefined);
+		eq(result, undefined);
 	},
 	'If object has no length property, shift should add it, set it to 0, and return undefined': function() {
 		target = {};
 		result = shift(target);
 		eq(target.length, 0);
-		eqstrict(result, undefined);
+		eq(result, undefined);
 	},
 	'If length is non-numeric, shift should set it to 0 and return undefined': function() {
 		target = {
@@ -35,7 +36,7 @@ tests({
 		}
 		result = shift(target);
 		eq(target.length, 0);
-		eqstrict(result, undefined);
+		eq(result, undefined);
 	},
 	'If length is convertible to an integer, shift should convert it and decrement by 1': function() {
 		target = {
@@ -54,13 +55,13 @@ tests({
 	'If object does not have an element at index 0, shift should return undefined': function() {
 		target = {};
 		result = shift(target);
-		eqstrict(result, undefined);
-		target2 = {
+		eq(result, undefined);
+		target = {
 			1: 'two',
 			length: 1
 		}
-		result = shift(target2);
-		eqstrict(result, undefined);
+		result = shift(target);
+		eq(result, undefined);
 	},
 	'If object has element at index 1 but not at 0, shift should create index 0 and set it to index 1': function() {
 		target = {
@@ -69,9 +70,9 @@ tests({
 			length: 2
 		}
 		result = shift(target);
-		eqstrict(result, undefined);
-		eqstrict(target[0], 'two');
-		eqstrict(target[2], 'three');
+		eq(result, undefined);
+		eq(target[0], 'two');
+		eq(target[2], 'three');
 	},
 	'If object has element at index 1 but not at 0, shift should remove index 1': function() {
 		target = {
@@ -80,10 +81,10 @@ tests({
 			length: 2
 		}
 		result = shift(target);
-		eqstrict(result, undefined);
-		eqstrict(target[0], 'two');
+		eq(result, undefined);
+		eq(target[0], 'two');
 		eq(1 in target, false);
-		eqstrict(target[2], 'three');
+		eq(target[2], 'three');
 	},
 	'If object has no element at index 0 or 1, shift should ignore any other indexed elements': function() {
 		target = {
@@ -92,11 +93,11 @@ tests({
 			length: 2
 		}
 		result = shift(target);
-		eqstrict(result, undefined);
+		eq(result, undefined);
 		eq(0 in target, false);
 		eq(1 in target, false);
-		eqstrict(target[2], 'three');
-		eqstrict(target[3], 'four');
+		eq(target[2], 'three');
+		eq(target[3], 'four');
 		eq(target.length, 1);
 	}
 });

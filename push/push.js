@@ -1,6 +1,6 @@
 // testing exercises: push() based on array.prototype.push()
 
-function push(array, values) {
+function push(array, /* first value required, others optional */ values) {
 	if (!Array.isArray(array)) {
 		if (!array.length) {
 			array.length = 0;

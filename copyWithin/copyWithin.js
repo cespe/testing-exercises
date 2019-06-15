@@ -1,6 +1,6 @@
 // function copyWithin based on array.prototype.copyWithin()
 
-function copyWithin(array, target, start, end) {
+function copyWithin(array, target /* optional */, start, end) {
 
 	var elToCopy = array.slice(start, end);
 

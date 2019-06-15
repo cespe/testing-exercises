@@ -1,6 +1,6 @@
 // function join() based on array.prototype.join()
 
-function join(array, separator) {
+function join(array, /* optional */ separator) {
 	if (separator === undefined) {
 		delimiter = ',';
 	} else {

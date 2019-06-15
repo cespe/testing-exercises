@@ -1,6 +1,6 @@
 // function unshift() based on array.prototype.unshift()
 
-function unshift(array, values) {
+function unshift(array, /* first value required, others optional */ values) {
 	if ('length' in array === false) {
 		array.length = 0;
 	} else {

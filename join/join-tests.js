@@ -44,54 +44,54 @@ tests({
 	},
 	'If the given array is empty, join should return an empty string': function() {
 		result = join([]);
-		eqstrict(result, '');
+		eq(result, '');
 	},
 	'If the given array has one element, join should return it in a string with no separator': function() {
 		result = join(['a']);
-		eqstrict(result, 'a');
+		eq(result, 'a');
 	},
 	'If an element is not a string, it should be converted to its string representation': function() {
 		result = join([1]);
-		eqstrict(result, '1');
-		result2 = join([true]);
-		eqstrict(result2, 'true');
-		result3 = join([{}]);
-		eqstrict(result3, '[object Object]');
+		eq(result, '1');
+		result = join([true]);
+		eq(result, 'true');
+		result = join([{}]);
+		eq(result, '[object Object]');
 	},
 	'If an element is null, undefined or empty, it should be converted to the empty string': function() {
 		result = join([null]);
-		eqstrict(result, '');
-		result2 = join([undefined]);
-		eqstrict(result2, '');
-		result3 = join([,]);
-		eqstrict(result3, '');
+		eq(result, '');
+		result = join([undefined]);
+		eq(result, '');
+		result = join([,]);
+		eq(result, '');
 	},
 	'If no separator is provided, join should concatenate multiple elements separated by commas': function() {
 		result = join(['A', 1, 'B', 2]);
-		eqstrict(result, 'A,1,B,2');
-		result2 = join([null, 'a', undefined,, true]);
-		eqstrict(result2, ",a,,,true");
+		eq(result, 'A,1,B,2');
+		result = join([null, 'a', undefined,, true]);
+		eq(result, ",a,,,true");
 	},
 	'If a separator is provided, join should use it to separate concatenated elements': function() {
 		result = join([1, 2, 3], ', ');
-		eqstrict(result, '1, 2, 3');
+		eq(result, '1, 2, 3');
 	},
 	'If a given separator is an empty string, join should concatenate with no spaces between elements': function() {
 		result = join([1, 2, 3], '');
-		eqstrict(result, '123');
+		eq(result, '123');
 	},
 	'If a given separator is not a string, join should convert it to its string representation': function() {
-		result2 = join([1, 2, 3], null);
-		eqstrict(result2, '1null2null3');
-		result3 = join([1, 2, 3], undefined);
-		eqstrict(result3, '1,2,3');
-		result4 = join([1, 2, 3], 0);
-		eqstrict(result4, '10203');
-		result5 = join([1, 2, 3], 9.0);
-		eqstrict(result5, '19293');
-		result6 = join(['a', 'b', 'c'], 8.8);
-		eqstrict(result6, 'a8.8b8.8c');
-		result7 = join([1, 2, 3], true);
-		eqstrict(result7, '1true2true3');
+		result = join([1, 2, 3], null);
+		eq(result, '1null2null3');
+		result = join([1, 2, 3], undefined);
+		eq(result, '1,2,3');
+		result = join([1, 2, 3], 0);
+		eq(result, '10203');
+		result = join([1, 2, 3], 9.0);
+		eq(result, '19293');
+		result = join(['a', 'b', 'c'], 8.8);
+		eq(result, 'a8.8b8.8c');
+		result = join([1, 2, 3], true);
+		eq(result, '1true2true3');
 	}
 });

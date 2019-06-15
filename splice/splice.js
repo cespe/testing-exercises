@@ -1,6 +1,6 @@
 // function splice() based on array.prototype.splice()
 
-function splice(array, start, deleteCount, items) {
+function splice(array, start /* optional */, deleteCount, items) {
 	var result = [];
 
 	if (start > array.length) {
