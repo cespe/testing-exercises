@@ -19,7 +19,7 @@ function sort(array, /* optional */ compare) {
 		}
 	}
 
-	// now sort the 'real' elements
+	// now sort the "real" elements
 	for (var i = 0; i < array.length - 1; i++) {
 		for (var k = i + 1; k < array.length; k++) {
 			if (arguments.length === 1) {
@@ -33,6 +33,8 @@ function sort(array, /* optional */ compare) {
 				} else {
 					var secondEl = '' + array[k];
 				}
+				// normalize strings to enable UTF-16 comparisons
+
 				if (firstEl > secondEl) {
 					var swap = array[i];
 					array[i] = array[k];
@@ -50,7 +52,7 @@ function sort(array, /* optional */ compare) {
 		}		
 	}
 	// restore undefined elements to end of array, to be followed by empty elements
-	for (var h = 0; h < undefinedElements; h++) {
+	for (var i = 0; i < undefinedElements; i++) {
 		array.push(undefined);
 	}
 	// restore empty elements to the end of the array

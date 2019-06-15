@@ -1,5 +1,7 @@
 These exercises from Practical Javascript require writing functions equivalent to array methods using test driven development. The testing framework is SimpleTest, a minimal test runner which extends [TinyTest](https://github.com/joewalnes/jstinytest).
 
+Most of the changes from TinyTest are cosmetic, but the version of SimpleTest used here does have one substantive change: the _eq_ alias points to _assertStrictEquals_ instead of _assertEquals_ as in the original.
+
 SimpleTest tests are written as methods on an anonymous object passed to tests(),
 which is an alias of run(), the test runner. The method name is a specification
 written as an expectation of what the code should do.

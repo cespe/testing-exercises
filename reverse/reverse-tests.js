@@ -19,89 +19,89 @@ Works on objects resembling arrays like fill(), shift(), etc.
 */
 
 tests({
-	'reverse should take an array or object resembling array and return it': function() {
+	'reverse should take an array or an object resembling an array and return it': function() {
 		target = [1, 2, 3];
 		result = reverse(target);
-		eqstrict(result, target);
+		eq(result, target);
 	},
-	'reverse should return unmutated object if length is missing': function() {
+	'Given an object, reverse should return it unmutated if length property is missing': function() {
 		target = {
 			0: 1,
 			1: 2
 		}
 		result = reverse(target);
-		eqstrict(result, target);
-		eqstrict(target[0], 1);
-		eqstrict(target[1], 2);
+		eq(result, target);
+		eq(target[0], 1);
+		eq(target[1], 2);
 	},
-	'reverse should return unmutated object if length evaluates to NaN': function() {
+	'Given an object, reverse should return it unmutated if length evaluates to NaN': function() {
 		target = {
 			0: 1,
 			1: 2,
 			length: 'abc'
 		}
 		result = reverse(target);
-		eqstrict( result, target);
-		eqstrict(target[0], 1);
-		eqstrict(target[1], 2);
+		eq( result, target);
+		eq(target[0], 1);
+		eq(target[1], 2);
 	},
 	'reverse should reverse elements in place': function() {
-		target0 = [];
-		result0 = reverse(target0);		// empty array
-		eqstrict(result0, target0);
+		target = [];
+		result = reverse(target);		// empty array
+		eq(result, target);
 		target = [1, 2, 3];
 		result = reverse(target);		// odd number of elements
-		eqstrict(result, target);
-		eqstrict(target[0], 3);
-		eqstrict(target[1], 2);
-		eqstrict(target[2], 1);
-		target2 = [1, 2, 3, 4];
-		result2 = reverse(target2);		// even number of elements
-		eqstrict(result2, target2);
-		eqstrict(target2[0], 4);
-		eqstrict(target2[1], 3);
-		eqstrict(target2[2], 2);
-		eqstrict(target2[3], 1);
-		target3 = [1, 2,,3];
-		result3 = reverse(target3);		// sparse array
-		eqstrict(result3, target3);
-		eqstrict(target3[0], 3);
-		eqstrict(target3[1], undefined);
-		eqstrict(target3[2], 2);
-		eqstrict(target3[3], 1);
-		target4 = {
+		eq(result, target);
+		eq(target[0], 3);
+		eq(target[1], 2);
+		eq(target[2], 1);
+		target = [1, 2, 3, 4];
+		result = reverse(target);		// even number of elements
+		eq(result, target);
+		eq(target[0], 4);
+		eq(target[1], 3);
+		eq(target[2], 2);
+		eq(target[3], 1);
+		target = [1, 2,,3];
+		result = reverse(target);		// sparse array
+		eq(result, target);
+		eq(target[0], 3);
+		eq(target[1], undefined);
+		eq(target[2], 2);
+		eq(target[3], 1);
+		target = {
 			0: 1,
 			1: 2,
 			2: 3,
 			length: 3.5
 		}
-		result4 = reverse(target4);		// well-formed object
-		eqstrict(result4, target4);
-		eqstrict(target4[0], 3);
-		eqstrict(target4[1], 2);
-		eqstrict(target4[2], 1);
+		result = reverse(target);		// well-formed object
+		eq(result, target);
+		eq(target[0], 3);
+		eq(target[1], 2);
+		eq(target[2], 1);
 	},
-	'if index to be reversed is undefined, reverse should create it': function() {
+	'If index position to be reversed is undefined, reverse should create it': function() {
 		target = {
 			0: 1,
 			1: 2,
 			length: 8
 		}
 		result = reverse(target);		// length too long
-		eqstrict(result, target);
-		eqstrict(target[7], 1);
-		eqstrict(target[6], 2);
-		target1 = {
+		eq(result, target);
+		eq(target[7], 1);
+		eq(target[6], 2);
+		target = {
 			0: 1,
 			1: 2,
 			6: undefined,
 			length: 8
 		}
-		result1 = reverse(target1);		// missing indexed properties
-		eqstrict(result1, target1);
-		eqstrict(target1[7], 1);
-		eqstrict(target1[6], 2);
-		eqstrict(target1[0], undefined);
+		result = reverse(target);		// missing indexed properties
+		eq(result, target);
+		eq(target[7], 1);
+		eq(target[6], 2);
+		eq(target[0], undefined);
 	},
 	'reverse should delete an index after reversing it to a newly defined index': function() {
 		target = {
@@ -110,39 +110,39 @@ tests({
 			length: 8
 		}
 		result = reverse(target);		// missing indexed properties
-		eqstrict(result, target);
-		eqstrict(target[7], 1);
-		eqstrict(target[6], 2);
+		eq(result, target);
+		eq(target[7], 1);
+		eq(target[6], 2);
 		eq(0 in target, false);
 		eq(1 in target, false);
-		target1 = {
+		target = {
 			0: 1,
 			1: 2,
 			6: undefined,
 			length: 8
 		}
-		result1 = reverse(target1);		// missing indexed properties
-		eqstrict(result1, target1);
-		eqstrict(target1[7], 1);
-		eqstrict(target1[6], 2);
-		eqstrict(target1[1], undefined);
-		eq(0 in target1, false);
-		target2 = {
+		result = reverse(target);		// missing indexed properties
+		eq(result, target);
+		eq(target[7], 1);
+		eq(target[6], 2);
+		eq(target[1], undefined);
+		eq(0 in target, false);
+		target = {
 			3: 4,
 			7: 8,
 			length: 8
 		}
-		// [].reverse.call(target2)
+		// [].reverse.call(target)
 		// {0: 8, 4: 4, length: 8}
-		result2 = reverse(target2);		// missing indexed properties
-		eqstrict(result2, target2);
-		eqstrict(target2[0], 8);
-		eqstrict(target2[4], 4);
-		eq(1 in target2, false);
-		eq(2 in target2, false);
-		eq(3 in target2, false);
-		eq(5 in target2, false);
-		eq(6 in target2, false);
-		eq(7 in target2, false);
+		result = reverse(target);		// missing indexed properties
+		eq(result, target);
+		eq(target[0], 8);
+		eq(target[4], 4);
+		eq(1 in target, false);
+		eq(2 in target, false);
+		eq(3 in target, false);
+		eq(5 in target, false);
+		eq(6 in target, false);
+		eq(7 in target, false);
 	}
 });

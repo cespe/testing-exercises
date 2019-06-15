@@ -38,121 +38,121 @@ tests({
 	'copyWithin should take an array and return it': function() {
 		arr = [1, 2, 3];
 		result = copyWithin(arr);
-		eqstrict(result, arr);
+		eq(result, arr);
 	},
 	'copyWithin should not change array.length': function() {
 		arr = [1, 2, 3];
 		var originalLength = arr.length;
 		result = copyWithin(arr);
-		eqstrict(result.length, originalLength);
+		eq(result.length, originalLength);
 	},
 	'copyWithin should replace array elements with slice elements starting at target': function() {
 		arr = [1, 2, 3];
 		result = copyWithin(arr, 0);
-		eqstrict(result, arr);
-		eqstrict(arr[0], 1);
-		eqstrict(arr[1], 2);
-		eqstrict(arr[2], 3);
+		eq(result, arr);
+		eq(arr[0], 1);
+		eq(arr[1], 2);
+		eq(arr[2], 3);
 	},
 	'copyWithin should not replace array elements if target >= array.length': function() {
 		arr = [1, 2, 3];
 		result = copyWithin(arr, 5);
-		eqstrict(arr[0], 1);
-		eqstrict(arr[1], 2);
-		eqstrict(arr[2], 3);
+		eq(arr[0], 1);
+		eq(arr[1], 2);
+		eq(arr[2], 3);
 	},
 	'copyWithin should trim slice to fit array.length - target if necessary': function() {
 		arr = [1, 2, 3];
 		result = copyWithin(arr, 1);
-		eqstrict(result, arr);
-		eqstrict(arr[0], 1);
-		eqstrict(arr[1], 1);
-		eqstrict(arr[2], 2);
+		eq(result, arr);
+		eq(arr[0], 1);
+		eq(arr[1], 1);
+		eq(arr[2], 2);
 	},
 	'If target is positive, copyWithin should start replacing at that index': function() {
 		arr = [1, 2, 3, 4];
 		result = copyWithin(arr, 2);
-		eqstrict(result, arr);
-		eqstrict(arr[0], 1);
-		eqstrict(arr[1], 2);
-		eqstrict(arr[2], 1);
-		eqstrict(arr[3], 2);
+		eq(result, arr);
+		eq(arr[0], 1);
+		eq(arr[1], 2);
+		eq(arr[2], 1);
+		eq(arr[3], 2);
 	},
 	'If target is negative, copyWithin should start replacing at array.length + target': function() {
 		arr = [1, 2, 3, 4];
 		result = copyWithin(arr, -2);
-		eqstrict(arr[0], 1);
-		eqstrict(arr[1], 2);
-		eqstrict(arr[2], 1);
-		eqstrict(arr[3], 2);
+		eq(arr[0], 1);
+		eq(arr[1], 2);
+		eq(arr[2], 1);
+		eq(arr[3], 2);
 	},
 		'If array.length + target < 0, copyWithin should not copy': function() {
-		arr1 = [1, 2, 3, 4];
-		result1 = copyWithin(arr1, -8);
-		eqstrict(arr1[0], 1);
-		eqstrict(arr1[1], 2);
-		eqstrict(arr1[2], 3);
-		eqstrict(arr1[3], 4);
+		arr = [1, 2, 3, 4];
+		result = copyWithin(arr, -8);
+		eq(arr[0], 1);
+		eq(arr[1], 2);
+		eq(arr[2], 3);
+		eq(arr[3], 4);
 	},
-	'If start is not a number, copyWithin should slice from index 0': function() {
+	'If start evaluates to NaN, copyWithin should slice from index 0': function() {
 		arr = [1, 2, 3, 4];
 		result = copyWithin(arr, -2, 'abc');
-		eqstrict(arr[0], 1);
-		eqstrict(arr[1], 2);
-		eqstrict(arr[2], 1);
-		eqstrict(arr[3], 2);
+		eq(arr[0], 1);
+		eq(arr[1], 2);
+		eq(arr[2], 1);
+		eq(arr[3], 2);
 		
 	},
 	'If start is positive, copyWithin should slice from that index': function() {
-		arr1 = [1, 2, 3, 4];
-		result1 = copyWithin(arr1, 2, 1);
-		eqstrict(arr1[0], 1);
-		eqstrict(arr1[1], 2);
-		eqstrict(arr1[2], 2);
-		eqstrict(arr1[3], 3);
+		arr = [1, 2, 3, 4];
+		result = copyWithin(arr, 2, 1);
+		eq(arr[0], 1);
+		eq(arr[1], 2);
+		eq(arr[2], 2);
+		eq(arr[3], 3);
 	},
 	'If start is negative, copyWithin should slice from array.length + start': function() {
-		arr1 = [1, 2, 3, 4];
-		result1 = copyWithin(arr1, 2, -3);
-		eqstrict(arr1[0], 1);
-		eqstrict(arr1[1], 2);
-		eqstrict(arr1[2], 2);
-		eqstrict(arr1[3], 3);
+		arr = [1, 2, 3, 4];
+		result = copyWithin(arr, 2, -3);
+		eq(arr[0], 1);
+		eq(arr[1], 2);
+		eq(arr[2], 2);
+		eq(arr[3], 3);
 	},
-	'If end is not a number, copyWithin should abort and not copy': function() {
+	'If end evaluates to NaN, copyWithin should abort and not copy': function() {
 		arr = [1, 2, 3, 4];
 		result = copyWithin(arr, 1, 2, 'abc');
-		eqstrict(arr[0], 1);
-		eqstrict(arr[1], 2);
-		eqstrict(arr[2], 3);
-		eqstrict(arr[3], 4);
+		eq(arr[0], 1);
+		eq(arr[1], 2);
+		eq(arr[2], 3);
+		eq(arr[3], 4);
 	},
 	'If end is undefined, copyWithin should stop slice at array.length - 1': function() {
 		arr = [1, 2, 3, 4];
 		result = copyWithin(arr, 1, 0, undefined);
-		eqstrict(arr[0], 1);
-		eqstrict(arr[1], 1);
-		eqstrict(arr[2], 2);
-		eqstrict(arr[3], 3);
+		eq(arr[0], 1);
+		eq(arr[1], 1);
+		eq(arr[2], 2);
+		eq(arr[3], 3);
 	},
 	'If end is positive, copyWithin should stop slice at index end - 1': function() {
-		arr1 = [1, 2, 3, 4, 5];
-		result1 = copyWithin(arr1, 0, 3, 4);
+		arr = [1, 2, 3, 4, 5];
+		result = copyWithin(arr, 0, 3, 4);
 		// [4, 2, 3, 4, 5]
-		eqstrict(arr1[0], 4);
-		eqstrict(arr1[1], 2);
-		eqstrict(arr1[2], 3);
-		eqstrict(arr1[3], 4);
-		eqstrict(arr1[4], 5);
+		eq(arr[0], 4);
+		eq(arr[1], 2);
+		eq(arr[2], 3);
+		eq(arr[3], 4);
+		eq(arr[4], 5);
 	},
 	'If end is negative, copyWithin should stop slice at index array.length + end': function() {
-		arr1 = [1, 2, 3, 4, 5];
-		result1 = copyWithin(arr1, 0, 3, -1);
+		arr = [1, 2, 3, 4, 5];
+		result = copyWithin(arr, 0, 3, -1);
 		// [4, 2, 3, 4, 5]
-		eqstrict(arr1[0], 4);
-		eqstrict(arr1[1], 2);
-		eqstrict(arr1[2], 3);
-		eqstrict(arr1[3], 4);
-		eqstrict(arr1[4], 5);
+		eq(arr[0], 4);
+		eq(arr[1], 2);
+		eq(arr[2], 3);
+		eq(arr[3], 4);
+		eq(arr[4], 5);
 	}
 });

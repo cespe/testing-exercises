@@ -11,11 +11,11 @@ var TinyTest = {
         var failures = 0;
 		var successes = 0;
 		var numberOfTests = 0;
-		function testText(numberOfTests) {
-			if (numberOfTests === 1) {
-				return " test, ";
+		function pluralize(number, word) {
+			if (number === 1) {
+				return " " + word + ", ";
 			} else {
-				return " tests, ";
+				return " " + word + "s, ";
 			}
 		}
         for (var testName in tests) {
@@ -37,7 +37,7 @@ var TinyTest = {
             if (window.document && document.body) {
                 document.body.style.backgroundColor = (failures == 0 ? '#99ff99' : '#ff9999');
 				// Render statistics to DOM
-				document.body.innerText = "Ran " + numberOfTests + testText(numberOfTests) + successes + " passing and " + failures + " failing."
+				document.body.innerText = "Ran " + numberOfTests + pluralize(numberOfTests, "test") + successes + " passing and " + failures + " failing."
             }
         }, 0);
     },
