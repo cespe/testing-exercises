@@ -15,14 +15,25 @@ tests({
 		eq(arr[2], 'c');
 		eq(arr[3], 'd');
 		
-		var months = ['March', 'Jan', 'Feb', 'Dec'];
+		var months = ['March', 'Jan', 'Feb', 'Dec'];	// test case from MDN
 		var monthsResult = sort(months);
 		eq(months[0], 'Dec');
 		eq(months[1], 'Feb');
 		eq(months[2], 'Jan');
 		eq(months[3], 'March');
 
-		// UTF-16 test case here...
+		var arr = ["🐶", "🐱"];	// dog is U+1F436 and cat is U+1F431
+		var result = sort(arr);
+		eq(arr[0], "🐱");
+		eq(arr[1], "🐶");
+
+		var first = '\u00e9'			// "é"
+		var second = '\u0065\u0301';	// "é"
+		eq(first > second, true);
+		var arr = [first, second];
+		result = sort(arr);
+		eq(arr[0], second)
+		eq(arr[1], first)
 	},
 	'If no callback is provided, sort should convert non-string elements to strings for sorting': function() {
 		var arr = [1, 30, 4, 21, 100000];		// test numbers converted to strings

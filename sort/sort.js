@@ -33,7 +33,9 @@ function sort(array, /* optional */ compare) {
 				} else {
 					var secondEl = '' + array[k];
 				}
-				// normalize strings to enable UTF-16 comparisons
+				// normalizing to enable UTF-16 comparisons turns out not to be necessary
+				//	firstEl = firstEl.normalize();
+				//	secondEl = secondEl.normalize();
 
 				if (firstEl > secondEl) {
 					var swap = array[i];

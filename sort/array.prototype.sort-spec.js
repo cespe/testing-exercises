@@ -6,8 +6,15 @@ sort() sorts in place and returns the sorted array
 arr.sort([compareFunction])
 
 Optional compareFunction defines the sort order. If omitted, the default is to
-convert elements to strings and sort them by UTF-16 code value. In practice, it looks 
-like you can just compare string elements and let javascript worry about the comparison.
+convert elements to strings and sort them by UTF-16 code value.
+
+Normalize the strings to sort by UTF-16 value.
+	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/normalize
+	https://withblue.ink/2019/03/11/why-you-need-to-normalize-unicode-strings.html
+		For the purposes of this exercise, I'm going to assume that the default NFC form
+		of string.normalize will do the job.
+	Update after testing. It turns out that at least in chrome, normalizing is not necessary,
+	i.e. it is already handled by regular javascript string comparison.
 
 compareFunction(firstEl, secondEl)
 
@@ -30,6 +37,38 @@ function compare(a, b) {
   return 0;
 }
 */
+
+arr = ["🐶", "🐱"]	// dog is U+1F436 and cat is U+1F431
+(2) ["🐶", "🐱"]
+arr.sort()
+(2) ["🐱", "🐶"]
+
+var first = '\u00e9';
+undefined
+var second = '\u0065\u0301';
+undefined
+first
+"é"
+first === "é"
+true
+second
+"é"
+second === "é"
+true
+first === second
+false
+first < second
+false
+arr = [first, second]
+(2) ["é", "é"]
+arr.sort()
+(2) ["é", "é"]
+arr[0] === second
+true
+arr[1] === first
+true
+
+// All of these cases are covererd by concatenation to an empty string
 
 [[1, 30, 100000], 'd', 'a'].sort()
 //(3) [Array(3), "a", "d"]
@@ -70,6 +109,5 @@ numbers.sort(compareNumbers)
 ['anchor', 'Anchovy', 'big', 'Big', 'BIG'].sort()
 //(5) ["Anchovy", "BIG", "Big", "anchor", "big"]
 
-// All of the above are covererd by concatenation to an empty string
 
 
