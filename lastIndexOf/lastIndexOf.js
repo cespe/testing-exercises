@@ -1,6 +1,6 @@
 // function under test is lastIndexOf(), based on array.prototype.lastIndexOf()
 
-function lastIndexOf(array, searchElement, fromIndex) {
+function lastIndexOf(array, searchElement /* optional */, fromIndex) {
 	var startingIndex = array.length - 1;
 
 	if (arguments.length > 2) {	// fromIndex supplied

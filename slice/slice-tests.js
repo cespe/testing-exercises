@@ -1,4 +1,9 @@
 /*
+ * Note from the future: I wrote these tests assuming begin and end must be integers, but of
+ * course they do not. I tested these more thoroughly on later functions in the exercises. I'm
+ * leaving these alone at least for now to document the process.
+ *
+ *
 The slice() method returns a shallow copy of a portion of an array into a new array object selected from begin to end (end not included). The original array will not be modified.
 
 arr.slice([begin[, end]])
@@ -35,21 +40,21 @@ tests({
 	'With no arguments, slice should return a copy of array': function() {
 		var target = [];
 		result = slice(target);
-		eqstrict(target[0], result[0]);
+		eq(target[0], result[0]);
 		eq(target.length, result.length);
 		var obj = {};
-		var target2 = [1, obj]
-		result2 = slice(target2);
-		eqstrict(target2[0], result2[0]);
-		eqstrict(target2[1], result2[1]);
+		var target = [1, obj]
+		result = slice(target);
+		eq(target[0], result[0]);
+		eq(target[1], result[1]);
 		obj = {changed: true};
-		eqstrict(target2[1], result2[1]);
-		eq(target2.length, result2.length);
+		eq(target[1], result[1]);
+		eq(target.length, result.length);
 	},
 	'If begin is a positive integer < array.length, slice should start at begin': function() {
 		target = [1, 2, 3];
 		result = slice(target, 1);
-		eqstrict(result[0], target[1]);
+		eq(result[0], target[1]);
 	},
 	'If begin is a positive integer > array.length, slice should return an empty array': function() {
 		// passes with no code change because for loop does not run
@@ -61,53 +66,53 @@ tests({
 	'If begin is negative and |begin| < array.length, slice should start at array.length + begin': function() {
 		target = [1, 2, 3];
 		result = slice(target, -1);
-		eqstrict(target[2], result[0]);
-		result2 = slice(target, -2);
-		eqstrict(target[1], result2[0]);
-		eqstrict(target[2], result2[1]);
+		eq(target[2], result[0]);
+		result = slice(target, -2);
+		eq(target[1], result[0]);
+		eq(target[2], result[1]);
 	},
 	'if begin is negative and |begin| > array.length, slice should start at index 0': function() {
-		result3 = slice(target, -5);
-		eqstrict(target[0], result3[0]);
-		eqstrict(target[1], result3[1]);
-		eqstrict(target[2], result3[2]);
+		result = slice(target, -5);
+		eq(target[0], result[0]);
+		eq(target[1], result[1]);
+		eq(target[2], result[2]);
 	},
 	'If begin is not an integer, slice should start at index 0': function() {
 		target = [1, 2];
 		result = slice(target, 'z')
-		eqstrict(result[0], target[0]);
+		eq(result[0], target[0]);
 	},
 	'If end is a positive integer < array.length, ending index should be end - 1': function() {
 		target = [1, 2, 3, 4];
 		result = slice(target, 1, 2);
-		eqstrict(result[0], target[1]);
+		eq(result[0], target[1]);
 	},
 	'If end is a positive integer > array.length, ending index should be array.length - 1': function() {
 		target = [1, 2, 3, 4];
 		result = slice(target, 2, 8);
-		eqstrict(target[2], result[0]);
-		eqstrict(target[3], result[1]);
+		eq(target[2], result[0]);
+		eq(target[3], result[1]);
 	},
 	'If end is a negative integer, ending index should be (array.length - 1) + end': function() {
 		target = [1, 2, 3, 4];
 		result = slice(target, 2, -1);
-		eqstrict(target[2], result[0]);
+		eq(target[2], result[0]);
 		eq(result.length, 1);
-		result2 = slice(target, 0, -5);
-		eqstrict(result2.length, 0);
-		eqstrict(result2[0], undefined);
+		result = slice(target, 0, -5);
+		eq(result.length, 0);
+		eq(result[0], undefined);
 	},
 	'If end is undefined or NaN, ending index should be array.length - 1': function() {
 		target = [1, 2, 3, 4];
 		result = slice(target, 2, undefined);
-		eqstrict(target[2], result[0]);
-		eqstrict(target[3], result[1]);
+		eq(target[2], result[0]);
+		eq(target[3], result[1]);
 		eq(result.length, 2);
-		target1 = [1, 2, 3, 4];
-		result1 = slice(target1, 2, 'z');
-		eqstrict(target1[2], result1[0]);
-		eqstrict(target1[3], result1[1]);
-		eq(result1.length, 2);
+		target = [1, 2, 3, 4];
+		result = slice(target, 2, 'z');
+		eq(target[2], result[0]);
+		eq(target[3], result[1]);
+		eq(result.length, 2);
 	},
 	'slice should work on array-like objects': function() {
 		// passes with no code change
@@ -115,8 +120,8 @@ tests({
 			return slice(arguments);
 		}
 		testList = list(1, 2);
-		eqstrict(testList[0], 1);
-		eqstrict(testList[1], 2);
+		eq(testList[0], 1);
+		eq(testList[1], 2);
 		eq(testList.length, 2);
 	}
 });

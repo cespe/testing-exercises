@@ -1,6 +1,6 @@
 // function includes() based on array.prototype.includes()
 
-function includes(array, valueToFind, findIndex) {
+function includes(array, valueToFind /* optional */ , findIndex) {
 	var startingIndex = 0;
 	if (Number.isInteger(findIndex)) {
 		if (findIndex > 0) {

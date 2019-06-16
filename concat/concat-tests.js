@@ -29,15 +29,15 @@ tests({
 	'if given a primitive, concat should push it to returned array': function() {
 		var resultArray = concat(1);
 		eq(resultArray[0], 1);
-		var resultArray2 = concat('a');
-		eq(resultArray2[0], 'a');
-		var resultArray3 = concat(true);
-		eq(resultArray3[0], true);
+		var resultArray = concat('a');
+		eq(resultArray[0], 'a');
+		var resultArray = concat(true);
+		eq(resultArray[0], true);
 		// null works in the console but doesn't pass the test
 		//var resultArrayNull = concat(null);
 		//eq(resultArrayNull, null);
-		var resultArray4 = concat(undefined);
-		eq(resultArray4[0], undefined);
+		var resultArray = concat(undefined);
+		eq(resultArray[0], undefined);
 	},
 	'if given a non-array object, concat should push it to returned array': function() {
 		var testObject = {};

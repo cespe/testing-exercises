@@ -28,32 +28,32 @@ tests({
 	'includes should return true if an array element matches valueToFind': function() {
 		result = includes([1, 2, 3], 3);
 		eq(result, true);
-		result2 = includes([0], 0);
-		eq(result2, true);
-		result3 = includes([0], -0);
-		eq(result3, true);
-		result4 = includes([0], +0);
-		eq(result4, true);
+		result = includes([0], 0);
+		eq(result, true);
+		result = includes([0], -0);
+		eq(result, true);
+		result = includes([0], +0);
+		eq(result, true);
 		var obj = {};
-		result5 = includes([obj], obj);
-		eq(result5, true);
+		result = includes([obj], obj);
+		eq(result, true);
 	},
 	'includes should return true if it finds a match for valueToFind = NaN': function() {
 		result = includes([NaN], NaN);
 		eq(result, true);
-		result2 = includes([[NaN]], [NaN]);
-		eq(result2, false);	// different objects
+		result = includes([[NaN]], [NaN]);
+		eq(result, false);	// different objects
 		var nan = [NaN];
-		result3 = includes([nan], nan);
-		eq(result3, true);
+		result = includes([nan], nan);
+		eq(result, true);
 	},	
 	'includes should return false if no array element matches valueToFind': function() {
 		result = includes([1, 2, 3], 4);
 		eq(result, false);
-		result2 = includes([{}], {});
-		eq(result2, false);		// different objects
-		result3 = includes([function(){}], function(){});
-		eq(result3, false);		// different objects
+		result = includes([{}], {});
+		eq(result, false);		// different objects
+		result = includes([function(){}], function(){});
+		eq(result, false);		// different objects
 	},
 	'If findIndex is not supplied, starting index should be 0': function() {
 		// passes with no code change
@@ -63,27 +63,27 @@ tests({
 	'If findIndex is a positive integer, starting index should be findIndex': function() {
 		result = includes([1, 2, 3, 4], 3, 1);
 		eq(result, true);
-		result2 = includes([1, 2, 3, 4], 3, 2);
+		result = includes([1, 2, 3, 4], 3, 2);
 		eq(result, true);
-		result3 = includes([1, 2, 3, 4], 3, 3);
-		eq(result3, false);
-		result4 = includes([1, 2, 3, 4], 3, 8);
-		eq(result4, false);
+		result = includes([1, 2, 3, 4], 3, 3);
+		eq(result, false);
+		result = includes([1, 2, 3, 4], 3, 8);
+		eq(result, false);
 
 	},
 	'If findIndex is a negative integer, starting index should be array.length + findIndex': function() {
 		result = includes([1, 2, 3, 4], 3, -2);
 		eq(result, true);
-		result2 = includes([1, 2, 3, 4], 3, -1);
-		eq(result2, false);
-		result3 = includes([1, 2, 3, 4], 1, -10);
-		eq(result3, true);
+		result = includes([1, 2, 3, 4], 3, -1);
+		eq(result, false);
+		result = includes([1, 2, 3, 4], 1, -10);
+		eq(result, true);
 	},
 	'If findIndex is not an integer, starting index should be 0': function() {
 		// passes with no code change
 		result = includes([1, 2, 3], 1, 'z');
 		eq(result, true);
-		result2 = includes([1, 2, 3], 1, {});
+		result = includes([1, 2, 3], 1, {});
 		eq(result, true);
 	}
 });

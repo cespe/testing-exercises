@@ -1,6 +1,6 @@
 // function slice() is based on array.prototype.slice()
 
-function slice(array, begin, end) {
+function slice(array /* optional */, begin, end) {
 	result = [];
 	if (arguments.length === 1) {
 		var startIndex = 0;

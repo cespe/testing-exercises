@@ -42,11 +42,11 @@ tests({
 	'If fromIndex < 0, starting index should be array.length + fromIndex': function() {
 		var result = indexOf([2, 2], 2, -5); 
 		eq(result, 0);
-		var result2 = indexOf([1, 2, 3, 4, 5], 3, -2); 
-		eq(result2, -1);
-		var result3 = indexOf([1, 2, 3, 4, 5], 3, -3);
-		eq(result3, 2);
-		var result4 = indexOf([2, 2], undefined, -5);
-		eq(result4, -3);
+		var result = indexOf([1, 2, 3, 4, 5], 3, -2); 
+		eq(result, -1);
+		var result = indexOf([1, 2, 3, 4, 5], 3, -3);
+		eq(result, 2);
+		var result = indexOf([2, 2], undefined, -5);
+		eq(result, -3);
 	}
 });

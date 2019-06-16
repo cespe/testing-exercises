@@ -1,6 +1,6 @@
 // The function under test is indexOf(), based on array.prototype.indexOf()
 
-function indexOf(array, searchElement, fromIndex) {
+function indexOf(array, searchElement /* optional */, fromIndex) {
 	var startingIndex = 0;
 	if (Number.isInteger(fromIndex)) {
 		if (fromIndex >= array.length) {
