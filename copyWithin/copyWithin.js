@@ -1,4 +1,7 @@
 // function copyWithin based on array.prototype.copyWithin()
+//
+// Left as is for now, but perhaps it would be more in the
+// spirit of the exercise to re-write without using array.slice...
 
 function copyWithin(array, target /* optional */, start, end) {
 
