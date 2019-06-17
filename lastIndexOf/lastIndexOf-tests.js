@@ -47,5 +47,13 @@ tests({
 	'If fromIndex >= 0 and < array.length, starting index should be fromIndex': function() {
 		var result = lastIndexOf([1, 1, 1, 1], 1, 1);
 		eq(result, 1);
+	},
+	'If fromIndex is not an integer but can be converted to one, it should be treated as an integer': function() {
+		var result = lastIndexOf([1, 1, 1, 1], 1, 1.8);
+		eq(result, 1);
+		var result = lastIndexOf([1, 1, 1, 1], 1, '1.8');
+		eq(result, 1);
+		var result = lastIndexOf([1, 1, 1, 1], 1, '1');
+		eq(result, 1);
 	}
 });

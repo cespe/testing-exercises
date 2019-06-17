@@ -2,6 +2,7 @@
 
 function includes(array, valueToFind /* optional */ , findIndex) {
 	var startingIndex = 0;
+	findIndex = Number.parseInt(findIndex);
 	if (Number.isInteger(findIndex)) {
 		if (findIndex > 0) {
 			startingIndex = findIndex;

@@ -60,7 +60,7 @@ tests({
 		result = includes([1, 2], 1);
 		eq(result, true);
 	},
-	'If findIndex is a positive integer, starting index should be findIndex': function() {
+	'If findIndex is positive, starting index should be findIndex': function() {
 		result = includes([1, 2, 3, 4], 3, 1);
 		eq(result, true);
 		result = includes([1, 2, 3, 4], 3, 2);
@@ -71,7 +71,7 @@ tests({
 		eq(result, false);
 
 	},
-	'If findIndex is a negative integer, starting index should be array.length + findIndex': function() {
+	'If findIndex is a negative, starting index should be array.length + findIndex': function() {
 		result = includes([1, 2, 3, 4], 3, -2);
 		eq(result, true);
 		result = includes([1, 2, 3, 4], 3, -1);
@@ -85,6 +85,14 @@ tests({
 		eq(result, true);
 		result = includes([1, 2, 3], 1, {});
 		eq(result, true);
+	},
+	'If findIndex is not an integer but is convertible to one, includes should treat it as such': function() {
+		result = includes([4, 3, 2, 1], 3, '2');
+		eq(result, false);
+		result = includes([4, 3, 2, 1], 3, '2.8');
+		eq(result, false);
+		result = includes([4, 3, 2, 1], 3, 2.8);
+		eq(result, false);
 	}
 });
 

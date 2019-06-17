@@ -4,6 +4,7 @@ function lastIndexOf(array, searchElement /* optional */, fromIndex) {
 	var startingIndex = array.length - 1;
 
 	if (arguments.length > 2) {	// fromIndex supplied
+		fromIndex = Number.parseInt(fromIndex);
 		if (Number.isInteger(fromIndex)) {
 			if(fromIndex < 0) {
 				if (Math.abs(fromIndex) > array.length) {
@@ -16,7 +17,7 @@ function lastIndexOf(array, searchElement /* optional */, fromIndex) {
 					startingIndex = fromIndex;
 				}
 			}
-		} else {	// fromIndex not an integer
+		} else {	// fromIndex not an integer or convertible to one
 			return -1;
 		}
 	}

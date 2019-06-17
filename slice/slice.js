@@ -2,6 +2,8 @@
 
 function slice(array /* optional */, begin, end) {
 	result = [];
+	begin = Number.parseInt(begin);
+	end = Number.parseInt(end);
 	if (arguments.length === 1) {
 		var startIndex = 0;
 	}

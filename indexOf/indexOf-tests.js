@@ -23,7 +23,7 @@ tests({
 		var result = indexOf(['a', 'a'], 'a');
 		eq(result, 0);
 	},
-	'indexOf should start search at array[0] if fromIndex is not an integer': function() {
+	'indexOf should start search at array[0] if fromIndex is not convertible to an integer': function() {
 		var result = indexOf(['a', 'a'], 'a', 'z');
 		eq(result, 0);
 	},
@@ -31,9 +31,13 @@ tests({
 		var result = indexOf([1, 2, 2], 2);
 		eq(result, 1);
 	},
-	'indexOf should start search at array[fromIndex] if it is provided': function() {
+	'indexOf should start search at array[fromIndex] if it is convertible to an integer': function() {
 		var result = indexOf([1, 1, 1], 1, 1);
-		eq(result, 1);	
+		eq(result, 1);
+		var result = indexOf([1, 1, 1], 1, '1.2');
+		eq(result, 1);
+		var result = indexOf([1, 1, 1], 1, 1.2);
+		eq(result, 1);
 	},
 	'If fromIndex is >= array.length, indexOf should return -1 without searching array': function() {
 		var result = indexOf([1], 1, 1);
