@@ -1,4 +1,4 @@
-// function under test is every(), based on array.prototype.every()
+// Function every(), based on array.prototype.every()
 
 function every(array, callback, /* optional */ altThis) {
 	var initialLength = array.length;

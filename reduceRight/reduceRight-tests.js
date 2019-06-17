@@ -1,4 +1,5 @@
-// 
+// See array.reduceRight-spec.md for notes on behavior and console test cases.
+// arr.reduceRight(callback(accumulator, currentValue[, index[, array]])[, initialValue])
 
 tests({
 	'if initialValue, reduceRight should run callback array.length times': function() {

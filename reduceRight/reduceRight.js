@@ -1,4 +1,4 @@
-// The function under test is reduceRight, based on array.prototype.reduceRight.
+// Function reduceRight, based on array.prototype.reduceRight.
 
 function reduceRight(array, callback, initialValue) {
 //	var originalLength = array.length;

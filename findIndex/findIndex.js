@@ -1,4 +1,4 @@
-// The function under test is findIndex, based on array.prototype.findIndex.
+// Function findIndex, based on array.prototype.findIndex.
 
 function findIndex(array, callback, /* optional */ altThis) {
 	var initialLength = array.length;

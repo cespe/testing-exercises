@@ -1,4 +1,4 @@
-// The function under test is find, based on array.prototype.find.
+// Function find, based on array.prototype.find.
 // See array.find-spec.md for specs and test cases.
 
 function find(array, callback, /* optional */ altThis) {

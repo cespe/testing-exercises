@@ -1,4 +1,4 @@
-// function under test is some(), based on array.prototype.some()
+// Function some(), based on array.prototype.some()
 
 function some(array, callback, /* optional */ altThis) {
 	var initialLength = array.length;

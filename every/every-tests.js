@@ -60,7 +60,7 @@ tests({
 		var result = every([], function(value) {
 			return value < 4;
 		});
-		eq(result, true); // vacuously true since callback is never called
+		eq(result, true); 
 	},
 	'every should return "false" immediately if callback returns "false"': function() {
 		var firstFalse = 0;
