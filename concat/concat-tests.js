@@ -33,9 +33,8 @@ tests({
 		eq(resultArray[0], 'a');
 		var resultArray = concat(true);
 		eq(resultArray[0], true);
-		// null works in the console but doesn't pass the test
-		//var resultArrayNull = concat(null);
-		//eq(resultArrayNull, null);
+		var resultArrayNull = concat(null);
+		eq(resultArrayNull[0], null);
 		var resultArray = concat(undefined);
 		eq(resultArray[0], undefined);
 	},
