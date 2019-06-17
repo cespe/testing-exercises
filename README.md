@@ -1,4 +1,4 @@
-These exercises from Practical Javascript require writing functions equivalent to array methods using test driven development. The testing framework is SimpleTest, a minimal test runner which extends [TinyTest](https://github.com/joewalnes/jstinytest).
+These exercises from Practical Javascript require writing functions equivalent to array methods using test driven development. The testing framework is SimpleTest, a minimal test runner that extends [TinyTest](https://github.com/joewalnes/jstinytest).
 
 Most of the changes from TinyTest are cosmetic, but the version of SimpleTest used here does have one substantive change: the _eq_ alias points to _assertStrictEquals_ instead of _assertEquals_ as in the original.
 
@@ -18,5 +18,3 @@ TDD Takeaways
 * Make each test about one thing
 * Only write enough code to clear the *__current__* error
 * Repeat until the test passes
-
-
