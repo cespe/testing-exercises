@@ -12,9 +12,10 @@ tests({
 		eq(result === arr, false);
 		eq(Array.isArray(result), true);
 	},
-	'splice should accept a number, start, as its second argument, and if only array and start are given, it should remove elements from start to end of array': function() {
+	'If only array and start are given, splice should remove elements from start to end of array': function() {
 		var arr = [1, 2, 3];
-		result = splice(arr, 1);
+		var startPosition = 1;
+		result = splice(arr, startPosition);
 		eq(arr.length, 1);
 		eq(arr[0], 1);
 		eq(arr[1] in arr, false);
@@ -80,7 +81,7 @@ tests({
 		eq(result[1], 2);
 		eq(arr.length, 0);
 	},
-	'splice should accept a number, deleteCount, as its third argument and remove that number of elements if given': function() {
+	'If splice is given deleteCount, it should remove that number of elements': function() {
 		var arr = [1, 2, 3, 4, 5];
 		result = splice(arr, 1, 3);		// deleteCount > start
 		eq(arr[0], 1);
