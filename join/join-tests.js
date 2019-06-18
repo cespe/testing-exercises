@@ -36,21 +36,21 @@ array1.join()
 */
 
 tests({
-	'join should take an array and return a string': function() {
+	'join should take an array and return a string.': function() {
 		result = undefined;
 		target = [];
 		result = join(target);
 		eq(typeof(result), 'string');
 	},
-	'If the given array is empty, join should return an empty string': function() {
+	'If the given array is empty, join should return an empty string.': function() {
 		result = join([]);
 		eq(result, '');
 	},
-	'If the given array has one element, join should return it in a string with no separator': function() {
+	'If the given array has one element, join should return it in a string with no separator.': function() {
 		result = join(['a']);
 		eq(result, 'a');
 	},
-	'If an element is not a string, it should be converted to its string representation': function() {
+	'If an element is not a string, it should be converted to its string representation.': function() {
 		result = join([1]);
 		eq(result, '1');
 		result = join([true]);
@@ -58,7 +58,7 @@ tests({
 		result = join([{}]);
 		eq(result, '[object Object]');
 	},
-	'If an element is null, undefined or empty, it should be converted to the empty string': function() {
+	'If an element is null, undefined or empty, it should be converted to the empty string.': function() {
 		result = join([null]);
 		eq(result, '');
 		result = join([undefined]);
@@ -66,21 +66,21 @@ tests({
 		result = join([,]);
 		eq(result, '');
 	},
-	'If no separator is provided, join should concatenate multiple elements separated by commas': function() {
+	'If no separator is provided, join should concatenate multiple elements separated by commas.': function() {
 		result = join(['A', 1, 'B', 2]);
 		eq(result, 'A,1,B,2');
 		result = join([null, 'a', undefined,, true]);
 		eq(result, ",a,,,true");
 	},
-	'If a separator is provided, join should use it to separate concatenated elements': function() {
+	'If a separator is provided, join should use it to separate concatenated elements.': function() {
 		result = join([1, 2, 3], ', ');
 		eq(result, '1, 2, 3');
 	},
-	'If a given separator is an empty string, join should concatenate with no spaces between elements': function() {
+	'If a given separator is an empty string, join should concatenate with no spaces between elements.': function() {
 		result = join([1, 2, 3], '');
 		eq(result, '123');
 	},
-	'If a given separator is not a string, join should convert it to its string representation': function() {
+	'If a given separator is not a string, join should convert it to its string representation.': function() {
 		result = join([1, 2, 3], null);
 		eq(result, '1null2null3');
 		result = join([1, 2, 3], undefined);

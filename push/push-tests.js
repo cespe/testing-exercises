@@ -2,12 +2,12 @@
 // See array.prototype.push-spec.js file for notes and console log tests
 
 tests({
-	'push should take an array and return its length': function() {
+	'push should take an array and return its length.': function() {
 	var target = [1, 2, 3];
 	var result = push(target);
 	eq(result, target.length);
 	},
-	'push should take zero or more argument values and append them to array': function() {
+	'push should take zero or more argument values and append them to array.': function() {
 	var target = [1, 2, 3];
 	push(target);
 	eq(target.length, 3);
@@ -31,12 +31,12 @@ tests({
 	eq(target[0], obj);
 	eq(target.length, 1);
 	},
-	'If array-resembling object has no length property, push should create it': function() {
+	'If array-resembling object has no length property, push should create it.': function() {
 	var obj = {};
 	push(obj, 'a');
 	eq(obj.length, 1);
 	},
-	'If length is not an integer, push should convert it to one': function() {
+	'If length is not an integer, push should convert it to one.': function() {
 	var obj = {
 		length: '0'
 	}
@@ -51,7 +51,7 @@ tests({
 	eq(obj[2], 6);  // parseInt produces a floor value, i.e. 2.8 --> 2
 	eq(obj.length, 3);
 	},
-	'If push cannot convert length to an integer, it should append to index 0': function() {
+	'If push cannot convert length to an integer, it should append to index 0.': function() {
 	var obj = {
 		length: 'abc'
 	}

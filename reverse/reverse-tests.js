@@ -19,12 +19,12 @@ Works on objects resembling arrays like fill(), shift(), etc.
 */
 
 tests({
-	'reverse should take an array or an object resembling an array and return it': function() {
+	'reverse should take an array or an object resembling an array and return it.': function() {
 		target = [1, 2, 3];
 		result = reverse(target);
 		eq(result, target);
 	},
-	'Given an object, reverse should return it unmutated if length property is missing': function() {
+	'Given an object, reverse should return it unmutated if length property is missing.': function() {
 		target = {
 			0: 1,
 			1: 2
@@ -34,7 +34,7 @@ tests({
 		eq(target[0], 1);
 		eq(target[1], 2);
 	},
-	'Given an object, reverse should return it unmutated if length evaluates to NaN': function() {
+	'Given an object, reverse should return it unmutated if length evaluates to NaN.': function() {
 		target = {
 			0: 1,
 			1: 2,
@@ -45,7 +45,7 @@ tests({
 		eq(target[0], 1);
 		eq(target[1], 2);
 	},
-	'reverse should reverse elements in place': function() {
+	'reverse should reverse elements in place.': function() {
 		target = [];
 		result = reverse(target);		// empty array
 		eq(result, target);
@@ -81,7 +81,7 @@ tests({
 		eq(target[1], 2);
 		eq(target[2], 1);
 	},
-	'If index position to be reversed is undefined, reverse should create it': function() {
+	'If index position to be reversed is undefined, reverse should create it.': function() {
 		target = {
 			0: 1,
 			1: 2,
@@ -103,7 +103,7 @@ tests({
 		eq(target[6], 2);
 		eq(target[0], undefined);
 	},
-	'reverse should delete an index after reversing it to a newly defined index': function() {
+	'reverse should delete an index after reversing it to a newly defined index.': function() {
 		target = {
 			0: 1,
 			1: 2,

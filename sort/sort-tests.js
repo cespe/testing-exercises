@@ -2,12 +2,12 @@
 
 
 tests({
-	'sort should take an array and return it': function() {
+	'sort should take an array and return it.': function() {
 		var arr = ['a'];
 		var result = sort(arr);
 		eq(result, arr);
 	},
-	'If no callback is provided, sort should sort elements into UTF-16 order': function() {
+	'If no callback is provided, sort should sort elements into UTF-16 order.': function() {
 		var arr = ['b', 'd', 'c', 'a'];
 		var result = sort(arr);
 		eq(arr[0], 'a');
@@ -35,7 +35,7 @@ tests({
 		eq(arr[0], second)
 		eq(arr[1], first)
 	},
-	'If no callback is provided, sort should convert non-string elements to strings for sorting': function() {
+	'If no callback is provided, sort should convert non-string elements to strings for sorting.': function() {
 		var arr = [1, 30, 4, 21, 100000];		// test numbers converted to strings
 		var result = sort(arr);
 		eq(arr[0], 1);
@@ -58,17 +58,17 @@ tests({
 		eq(arr[6], testFunction);
 		eq(arr[7], null);
 	},
-	'sort should pass a first element for comparison as the first argument to the callback': function() {
+	'sort should pass a first element for comparison as the first argument to the callback.': function() {
 		sort(['a', 'b'], function(a) {
 			eq(a, 'a');
 		});
 	},
-	'sort should pass a second element for comparison as the second argument to the callback': function() {
+	'sort should pass a second element for comparison as the second argument to the callback.': function() {
 		sort(['a', 'b'], function(a, b) {
 			eq(b, 'b');
 		});
 	},
-	'callback(a, b) should return a negative number if a < b and a should be sorted lower than b': function() {
+	'callback(a, b) should return a negative number if a < b and a should be sorted lower than b.': function() {
 		// Wording and comparisons of this test respect the wording of the MDN doc
 		// passes without code change
 		function compareNumber(a, b) {
@@ -78,7 +78,7 @@ tests({
 		result = sort(arr, compareNumber);
 		eq(arr.indexOf(1) < arr.indexOf(2), true);
 	},
-	'callback(a, b) should return 0 if a === b and sort should leave them alone with respect to each other': function() {
+	'callback(a, b) should return 0 if a === b and sort should leave them alone with respect to each other.': function() {
 		// Wording and comparisons of this test respect the wording of the MDN doc
 		// passes without code change
 		function compareNumber(a, b) {
@@ -89,7 +89,7 @@ tests({
 		eq(arr.indexOf(1) < arr.indexOf('1'), true);
 		eq(arr.indexOf('1') - arr.indexOf(1), 1);
 	},
-	'callback(a, b) should return a positive number if a > b and a should be sorted higher than b': function() {
+	'callback(a, b) should return a positive number if a > b and a should be sorted higher than b.': function() {
 		// Wording and comparisons of this test respect the wording of the MDN doc
 		var arr = [2, 1];
 		function compareNumbers(a, b) {
@@ -98,7 +98,7 @@ tests({
 		result = sort(arr, compareNumbers);
 		eq(arr.indexOf(1) < arr.indexOf(2), true);
 	},
-	'sort should move all empty index positions to the end of the array': function() {
+	'sort should move all empty index positions to the end of the array.': function() {
 		var arr = ['b',, 'a'];
 		var result = sort(arr);
 		eq(arr[0], 'a');
@@ -117,7 +117,7 @@ tests({
 		
 
 	},
-	'sort should move all undefined elements to the end of array but before empty index positions': function() {
+	'sort should move all undefined elements to the end of array but before empty index positions.': function() {
 		var arr = ['z', undefined,, 3, undefined, 100]
 		var result = sort(arr);
 		eq(arr[0], 100);

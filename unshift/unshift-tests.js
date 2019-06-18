@@ -15,19 +15,19 @@ resembling arrays.
 */
 
 tests({
-	'unshift should take an array and return its length': function() {
+	'unshift should take an array and return its length.': function() {
 		target = [];
 		result = unshift(target, 'item');
 		eq(result, target.length);
 	},
-	'If given an object resembling an array with no length property, unshift should add it and set to 0': function() {
+	'If given an object resembling an array with no length property, unshift should add it and set to 0.': function() {
 		target = {};
 		result = unshift(target);
 		eq('length' in target, true);
 		eq(result, 0);
 		eq(target.length, 0);
 	},
-	"If given object's length is not a number, unshift should set it to 0": function() {
+	"If given object's length is not a number, unshift should set it to 0.": function() {
 		target = {
 			length: 'abc'
 		}
@@ -35,7 +35,7 @@ tests({
 		eq(result, 0);
 		eq(target.length, 0);
 	},
-	"If given object's length is convertible to an integer, unshift should convert it": function() {
+	"If given object's length is convertible to an integer, unshift should convert it.": function() {
 		target = {
 			length: 2.58
 		}
@@ -49,7 +49,7 @@ tests({
 		eq(result, 3);
 		eq(target.length, 3)
 	},
-	'unshift should take zero or more values and prepend them to array': function() {
+	'unshift should take zero or more values and prepend them to array.': function() {
 		target = [];
 		result = unshift(target);					// empty array, zero values
 		eq(target[0], undefined);

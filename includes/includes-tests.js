@@ -25,7 +25,7 @@ If findIndex is a non-integer, it just makes the starting index 0 (default)
 */
 
 tests({
-	'includes should return true if an array element matches valueToFind': function() {
+	'includes should return true if an array element matches valueToFind.': function() {
 		result = includes([1, 2, 3], 3);
 		eq(result, true);
 		result = includes([0], 0);
@@ -38,7 +38,7 @@ tests({
 		result = includes([obj], obj);
 		eq(result, true);
 	},
-	'includes should return true if it finds a match for valueToFind = NaN': function() {
+	'includes should return true if it finds a match for valueToFind = NaN.': function() {
 		result = includes([NaN], NaN);
 		eq(result, true);
 		result = includes([[NaN]], [NaN]);
@@ -47,7 +47,7 @@ tests({
 		result = includes([nan], nan);
 		eq(result, true);
 	},	
-	'includes should return false if no array element matches valueToFind': function() {
+	'includes should return false if no array element matches valueToFind.': function() {
 		result = includes([1, 2, 3], 4);
 		eq(result, false);
 		result = includes([{}], {});
@@ -55,12 +55,12 @@ tests({
 		result = includes([function(){}], function(){});
 		eq(result, false);		// different objects
 	},
-	'If findIndex is not supplied, starting index should be 0': function() {
+	'If findIndex is not supplied, starting index should be 0.': function() {
 		// passes with no code change
 		result = includes([1, 2], 1);
 		eq(result, true);
 	},
-	'If findIndex is positive, starting index should be findIndex': function() {
+	'If findIndex is positive, starting index should be findIndex.': function() {
 		result = includes([1, 2, 3, 4], 3, 1);
 		eq(result, true);
 		result = includes([1, 2, 3, 4], 3, 2);
@@ -71,7 +71,7 @@ tests({
 		eq(result, false);
 
 	},
-	'If findIndex is a negative, starting index should be array.length + findIndex': function() {
+	'If findIndex is a negative, starting index should be array.length + findIndex.': function() {
 		result = includes([1, 2, 3, 4], 3, -2);
 		eq(result, true);
 		result = includes([1, 2, 3, 4], 3, -1);
@@ -79,14 +79,14 @@ tests({
 		result = includes([1, 2, 3, 4], 1, -10);
 		eq(result, true);
 	},
-	'If findIndex is not an integer, starting index should be 0': function() {
+	'If findIndex is not an integer, starting index should be 0.': function() {
 		// passes with no code change
 		result = includes([1, 2, 3], 1, 'z');
 		eq(result, true);
 		result = includes([1, 2, 3], 1, {});
 		eq(result, true);
 	},
-	'If findIndex is not an integer but is convertible to one, includes should treat it as such': function() {
+	'If findIndex is not an integer but is convertible to one, includes should treat it as such.': function() {
 		result = includes([4, 3, 2, 1], 3, '2');
 		eq(result, false);
 		result = includes([4, 3, 2, 1], 3, '2.8');

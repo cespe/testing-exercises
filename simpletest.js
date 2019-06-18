@@ -25,10 +25,10 @@ var TinyTest = {
                 //testAction.apply(this); 
 				testAction();  // already bound to TinyTest so apply(this) not needed
 				successes++;
-				console.log(testName + '.%c Test passed.', "color: green;");
+				console.log(testName + '%c Test passed.', "color: green;");
             } catch (e) {
                 failures++;
-				console.groupCollapsed(testName + '. %c' +  e, "color: red;");
+				console.groupCollapsed(testName + ' %c' +  e, "color: red;");
                 console.error(e.stack);
 				console.groupEnd();
             }

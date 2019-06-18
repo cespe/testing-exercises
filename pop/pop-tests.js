@@ -1,6 +1,6 @@
 
 tests({
-	'pop should remove the last element in array and return it': function() {
+	'pop should remove the last element in array and return it.': function() {
 		var target = [1, 2, 3];
 		var result = pop(target);
 		eq(result, 3);
@@ -8,7 +8,7 @@ tests({
 		eq(target[1], 2);
 		eq(target[2], undefined);
 	},
-	'pop should decrement array.length after removing and returning element': function() {
+	'pop should decrement array.length after removing and returning element.': function() {
 		target = [1, 2, 3];
 		pop(target);
 		eq(target.length, 2);
@@ -22,13 +22,13 @@ tests({
 		eq(target[0], 1);
 		eq(target[1], undefined);
 	},
-	'pop should return undefined if array is empty': function() {
+	'pop should return undefined if array is empty.': function() {
 		target = [];
 		result = pop(target);
 		eq(result, undefined);
 		eq(target.length, 0);
 	},
-	'If given an object with no indexed element at length - 1, pop should return undefined': function() {
+	'If given an object with no indexed element at length - 1, pop should return undefined.': function() {
 		target = {};
 		result = pop(target);
 		eq(result, undefined);
@@ -43,7 +43,7 @@ tests({
 		result = pop(target);
 		eq(result, undefined);
 	},
-	'if given an object with no length property, pop should create one and set it to 0': function() {
+	'if given an object with no length property, pop should create one and set it to 0.': function() {
 		target = {};
 		result = pop(target);
 		eq(result, undefined);

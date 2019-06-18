@@ -15,23 +15,23 @@ The starting index can be specified with an optional fromIndex parameter.
 */
 
 tests({
-	'indexOf should return -1 if searchElement is not found': function() {
+	'indexOf should return -1 if searchElement is not found.': function() {
 		var result = indexOf(['a'], 'b');
 		eq(result, -1);
 	},
-	'indexOf should start search at array[0] if fromIndex is not provided': function() {
+	'indexOf should start search at array[0] if fromIndex is not provided.': function() {
 		var result = indexOf(['a', 'a'], 'a');
 		eq(result, 0);
 	},
-	'indexOf should start search at array[0] if fromIndex is not convertible to an integer': function() {
+	'indexOf should start search at array[0] if fromIndex is not convertible to an integer.': function() {
 		var result = indexOf(['a', 'a'], 'a', 'z');
 		eq(result, 0);
 	},
-	'indexOf should return index of first element matching searchElement': function() {
+	'indexOf should return index of first element matching searchElement.': function() {
 		var result = indexOf([1, 2, 2], 2);
 		eq(result, 1);
 	},
-	'indexOf should start search at array[fromIndex] if it is convertible to an integer': function() {
+	'indexOf should start search at array[fromIndex] if it is convertible to an integer.': function() {
 		var result = indexOf([1, 1, 1], 1, 1);
 		eq(result, 1);
 		var result = indexOf([1, 1, 1], 1, '1.2');
@@ -39,11 +39,11 @@ tests({
 		var result = indexOf([1, 1, 1], 1, 1.2);
 		eq(result, 1);
 	},
-	'If fromIndex is >= array.length, indexOf should return -1 without searching array': function() {
+	'If fromIndex is >= array.length, indexOf should return -1 without searching array.': function() {
 		var result = indexOf([1], 1, 1);
 		eq(result, -1);
 	},
-	'If fromIndex < 0, starting index should be array.length + fromIndex': function() {
+	'If fromIndex < 0, starting index should be array.length + fromIndex.': function() {
 		var result = indexOf([2, 2], 2, -5); 
 		eq(result, 0);
 		var result = indexOf([1, 2, 3, 4, 5], 3, -2); 

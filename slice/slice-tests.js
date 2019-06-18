@@ -37,7 +37,7 @@ slice works on "array-like" objects, i.e. objects with a length property and ite
  */
 
 tests({
-	'With no arguments, slice should return a copy of array': function() {
+	'With no arguments, slice should return a copy of array.': function() {
 		var target = [];
 		result = slice(target);
 		eq(target[0], result[0]);
@@ -51,19 +51,19 @@ tests({
 		eq(target[1], result[1]);
 		eq(target.length, result.length);
 	},
-	'If begin is positive and < array.length, slice should start at begin': function() {
+	'If begin is positive and < array.length, slice should start at begin.': function() {
 		target = [1, 2, 3];
 		result = slice(target, 1);
 		eq(result[0], target[1]);
 	},
-	'If begin is positive and > array.length, slice should return an empty array': function() {
+	'If begin is positive and > array.length, slice should return an empty array.': function() {
 		// passes with no code change because for loop does not run
 		target = [1, 2, 3];
 		result = slice(target, 4);
 		eq(result.length, 0);
 		Array.isArray(result);
 	},
-	'If begin is negative and |begin| < array.length, slice should start at array.length + begin': function() {
+	'If begin is negative and |begin| < array.length, slice should start at array.length + begin.': function() {
 		target = [1, 2, 3];
 		result = slice(target, -1);
 		eq(target[2], result[0]);
@@ -71,18 +71,18 @@ tests({
 		eq(target[1], result[0]);
 		eq(target[2], result[1]);
 	},
-	'if begin is negative and |begin| > array.length, slice should start at index 0': function() {
+	'if begin is negative and |begin| > array.length, slice should start at index 0.': function() {
 		result = slice(target, -5);
 		eq(target[0], result[0]);
 		eq(target[1], result[1]);
 		eq(target[2], result[2]);
 	},
-	'If begin is not convertible to an integer, slice should start at index 0': function() {
+	'If begin is not convertible to an integer, slice should start at index 0.': function() {
 		target = [1, 2];
 		result = slice(target, 'z')
 		eq(result[0], target[0]);
 	},
-	'If begin is convertible to an integer, slice should treat it as such': function() {
+	'If begin is convertible to an integer, slice should treat it as such.': function() {
 		target = [1, 2, 3];
 		result = slice(target, '1');
 		eq(result[0], target[1]);
@@ -91,19 +91,19 @@ tests({
 		result = slice(target, 1.3);
 		eq(result[0], target[1]);
 	},
-	'If end is positive and < array.length, ending index should be end - 1': function() {
+	'If end is positive and < array.length, ending index should be end - 1.': function() {
 		target = [1, 2, 3, 4];
 		result = slice(target, 1, 2);
 		eq(result[0], target[1]);
 		eq(result.length, 1);
 	},
-	'If end is positive and > array.length, ending index should be array.length - 1': function() {
+	'If end is positive and > array.length, ending index should be array.length - 1.': function() {
 		target = [1, 2, 3, 4];
 		result = slice(target, 2, 8);
 		eq(target[2], result[0]);
 		eq(target[3], result[1]);
 	},
-	'If end is negative, ending index should be (array.length - 1) + end': function() {
+	'If end is negative, ending index should be (array.length - 1) + end.': function() {
 		target = [1, 2, 3, 4];
 		result = slice(target, 2, -1);
 		eq(target[2], result[0]);
@@ -112,7 +112,7 @@ tests({
 		eq(result.length, 0);
 		eq(result[0], undefined);
 	},
-	'If end is convertible to an integer, slice should treat it as such': function() {
+	'If end is convertible to an integer, slice should treat it as such.': function() {
 		target = [1, 2, 3, 4];
 		result = slice(target, 1, '2');
 		eq(result[0], target[1]);
@@ -123,7 +123,7 @@ tests({
 		eq(result[0], target[1]);
 		eq(result.length, 1);
 	},
-	'If end is undefined or NaN, ending index should be array.length - 1': function() {
+	'If end is undefined or NaN, ending index should be array.length - 1.': function() {
 		target = [1, 2, 3, 4];
 		result = slice(target, 2, undefined);
 		eq(target[2], result[0]);
@@ -135,7 +135,7 @@ tests({
 		eq(target[3], result[1]);
 		eq(result.length, 2);
 	},
-	'slice should work on array-like objects': function() {
+	'slice should work on array-like objects.': function() {
 		// passes with no code change
 		function list() {
 			return slice(arguments);

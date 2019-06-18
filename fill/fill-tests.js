@@ -19,30 +19,30 @@ fill works on generic objects too, but only if they have a length convertible to
 */
 
 tests({
-	'fill should take an array and return it': function() {
+	'fill should take an array and return it.': function() {
 		target = [1];
 		result = fill(target);
 		eq(result, target);
 	},
-	'fill should take a value and set array elements to it': function() {
+	'fill should take a value and set array elements to it.': function() {
 		target = [1];
 		result = fill(target, 'x');
 		eq(result, target);
 		eq(target[0], 'x');
 	},
-	'if start is undefined, fill should set start to 0': function() {
+	'if start is undefined, fill should set start to 0.': function() {
 		target = [1, 2];
 		result = fill(target, 'x');
 		eq(result, target);
 		eq(target[0], 'x');
 	},
-	'if end is undefined, fill should set end to array.length': function() {
+	'if end is undefined, fill should set end to array.length.': function() {
 		target = [1, 2];
 		result = fill(target, 'x');
 		eq(result, target);
 		eq(target[1], 'x');
 	},
-	'If start is provided, fill should use it as starting index': function() {
+	'If start is provided, fill should use it as starting index.': function() {
 		target = [1, 2, 3];
 		result = fill(target, 'x', 1);
 		eq(result, target);
@@ -50,7 +50,7 @@ tests({
 		eq(target[1], 'x');
 		eq(target[2], 'x');
 	},
-	'If end is provided, fill should use it as final index + 1': function() {
+	'If end is provided, fill should use it as final index + 1.': function() {
 		target = [1, 2, 3];
 		result = fill(target, 'x', 1, 2);
 		eq(result, target);
@@ -58,7 +58,7 @@ tests({
 		eq(target[1], 'x');
 		eq(target[2], 3);
 	},
-	'If start is negative, fill should start at index array.length + start': function() {
+	'If start is negative, fill should start at index array.length + start.': function() {
 		target = [1, 2, 3];
 		result = fill(target, 'x', -1);
 		eq(result, target);
@@ -66,7 +66,7 @@ tests({
 		eq(target[1], 2);
 		eq(target[2], 'x');
 	},
-	'If end is negative, fill should stop at index array.length - 1 + start': function() {
+	'If end is negative, fill should stop at index array.length - 1 + start.': function() {
 		target = [1, 2, 3];
 		result = fill(target, 'x', 0, -1);
 		eq(result, target);
@@ -74,7 +74,7 @@ tests({
 		eq(target[1], 'x');
 		eq(target[2], 3);
 	},
-	'If given an object with no length property, fill should return the object unchanged': function() {
+	'If given an object with no length property, fill should return the object unchanged.': function() {
 		target = {
 			0: 1,
 			1: 2
@@ -94,7 +94,7 @@ tests({
 		eq(target[1], 2);
 		eq('length' in target, false);
 	},
-	'If given an object with length property that is convertible to a number, fill should use it': function() {
+	'If given an object with length property that is convertible to a number, fill should use it.': function() {
 		// passes with no code change	
 		target = {
 			0: 1,
